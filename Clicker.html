@@ -8,27 +8,66 @@
             Width: 100px;
             opacity: 1;
             Background-color: red;
+            display: block;
+            margin-top: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 9%;
+
+        }
+
+        div {
+            opacity: 1;
+            display: block;
+            margin-top: 100;
+            margin-left: auto;
+            margin-right: auto;
+            width: 9%;
+
         }
 
         body {
-            color: blue;
-        }
-
-       hello {
-            color: red;
+            color: green;
         }
     </style>
 </head>
 
 <body>
+    <img id="img" src="https://cdn.shoplightspeed.com/shops/606965/files/5388598/galaxy-ball.jpg">
+    <div id="score">
 
-    <img src="https://cdn.shoplightspeed.com/shops/606965/files/5388598/galaxy-ball.jpg">
-    <p> Hello gamers! Are you ready for the most epic game of your entire gaming career? If you are not, you are
-        garbage, but if you are, be prepared. You will embark on clicking a circle for the rest of your life! Have fun!
+    </div>
+    <div id="upgrade">
+        upgrade
+    </div>
 
-    </p>
-    <hello>hello</hello>
-    
+
+
 </body>
 
 </html>
+<script>
+    document.getElementById("img").addEventListener("click", imgClick)
+    document.getElementById("upgrade").addEventListener("click", upgradeClick)
+    var score = 0
+    var price = 5
+    function imgClick() {
+        score = score + 1
+        document.getElementById("score").innerText = "score = " + score
+    }
+    function upgradeClick() {
+        if (score >= price) {
+            score = score - price
+            document.getElementById("score").innerText = "score = " + score
+            price = price * 2
+            setInterval(autoUpgrade, 300)
+            
+        }
+    }
+    function autoUpgrade() {
+        score = score + 1
+        document.getElementById("score").innerText = "score = " + score
+    }
+
+
+</script>
