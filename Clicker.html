@@ -3,11 +3,11 @@
 
 <head>
     <style>
-        img {
+        #img {
             height: 100px;
             Width: 100px;
             opacity: 1;
-            Background-color: red;
+            Background-color: cornsilk;
             display: block;
             margin-top: 250px;
             margin-left: auto;
@@ -27,20 +27,31 @@
         }
 
         body {
-            color: green;
+            color: black;
+            font-size: 20px;
+            background-color: cornsilk;
         }
+        #car {
+            display:none;
+            position:absolute;
+            height: 140px;
+            top: 150px;
+
+        }
+        
+        
     </style>
 </head>
 
 <body>
-    <img id="img" src="https://cdn.shoplightspeed.com/shops/606965/files/5388598/galaxy-ball.jpg">
+    <img id="img" src="H.png">
     <div id="score">
-
     </div>
     <div id="upgrade">
-        upgrade
+    Autoclicker
     </div>
-
+    <div id="upgrade2">More clicks </div>
+<img id="car" src="Car.png">
 
 
 </body>
@@ -49,25 +60,59 @@
 <script>
     document.getElementById("img").addEventListener("click", imgClick)
     document.getElementById("upgrade").addEventListener("click", upgradeClick)
+    document.getElementById("upgrade2").addEventListener("click", upgradeClick2)
     var score = 0
     var price = 5
+    var price2 = 20
+    var increaseclick = 0
+    var price3 = 1000
+    var carx = -100
+    setInterval(checkForCar,5)
+    function checkForCar(){
+        if(score>10){
+            document.getElementById("car").style.display = "block"
+            document.getElementById("car").style.left = carx + "px"
+            carx = carx + 1
+            if (carx > window.innerWidth) {
+                carx = -100
+            }
+
+            
+        }
+    }
     function imgClick() {
+        score = score + increaseclick
         score = score + 1
-        document.getElementById("score").innerText = "score = " + score
+        document.getElementById("score").innerText = "score = " + Math.floor(score) 
     }
     function upgradeClick() {
         if (score >= price) {
             score = score - price
-            document.getElementById("score").innerText = "score = " + score
-            price = price * 2
+            document.getElementById("score").innerText = "score = " + Math.floor(score) 
+            price = price * 1.3
             setInterval(autoUpgrade, 300)
             
         }
     }
     function autoUpgrade() {
         score = score + 1
-        document.getElementById("score").innerText = "score = " + score
+        document.getElementById("score").innerText = "score = " + Math.floor(score) 
     }
-
-
+    function upgradeClick2() {
+        if (score >= price2) {
+            score = score - price2
+            increaseclick = increaseclick + 1
+            document.getElementById("score").innerText = "score = " + Math.floor(score) 
+            price2 = price2 * 1.8
+            
+    }
+    }
+    function car(){
+        if (score >= price3) {
+            score = score - price3
+            increaseclick = increaseclick + 1
+            document.getElementById("score").innerText = "score = " + Math.floor(score) 
+            price3 = price3 * 1.2
+    }
+    }
 </script>
