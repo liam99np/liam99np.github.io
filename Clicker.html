@@ -34,9 +34,20 @@
         #car {
             display:none;
             position:absolute;
+            height: 100px;
+            top: 170px;
+            z-index: 1;
+
+        }
+        #road {
+            display:none;
+            position:absolute;
+            left : -450px;
             height: 140px;
             top: 150px;
-
+            width: 2300px;
+         -webkit-transform: scaleX(-1);
+         transform: scaleX(-1);
         }
         
         
@@ -52,7 +63,7 @@
     </div>
     <div id="upgrade2">More clicks </div>
 <img id="car" src="Car.png">
-
+<img id="road" src= "Bridge.png">
 
 </body>
 
@@ -67,19 +78,33 @@
     var increaseclick = 0
     var price3 = 100
     var carx = -100
+    var cary = 100
     setInterval(checkForCar,5)
+    setInterval(checkforRoad,5 )
     function checkForCar(){
-        if(score>10){
+        if(score>=10){
             document.getElementById("car").style.display = "block"
             document.getElementById("car").style.left = carx + "px"
+            //document.getElementById("car").style.top = cary + "px"
             carx = carx + 1
             if (carx > window.innerWidth) {
                 carx = -100
+            }
+            if (cary > window.innerwidth) {
+                cary = 500
             }
 
             
         }
     }
+    function checkforRoad(){
+        if(score>=10){
+            document.getElementById("road").style.display = "block"
+        }
+    }
+        
+    
+    
     function imgClick() {
         score = score + increaseclick
         score = score + 1
