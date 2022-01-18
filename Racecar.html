@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-         #car {
-            position: absolute;
-            height: 150px;
-            top: 400px;
-            z-index: 1;
-            width: 150px;
-            left: 30px ;
 
-        }
-        #car2 {          
+    <style>
+
+        #car {
             position: absolute;
-            height: 150px;
-            top: 90px;
+            height: 140px;
+            top: 190px;
             z-index: 1;
-            width: 150px;
-            left: 30px ;
-        }
-        body {
-            background-image:url(Background.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            max-width: 99%;
-            max-height: 99%;
-        }
-        #track {
-            
-            
-        }
-        #background {
-          
-        }
+            width: 250px;
+            left: 0px;
         
+        }
 
-</style>
+        #car2 {
+            position: absolute;
+            height: 140px;
+            top: 307px;
+            z-index: 1;
+            width: 250px;
+            left: 0px;
+        }
+
+        body {
+            background-image: url(Background.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            max-width: max-content;
+            max-height: max-content;
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+
+        #track {
+            height: 1000px;
+            margin-left: -10px;
+            margin-top: -345px;
+            width: 1500px;
+        }
+    </style>
 </head>
 
 
 <body>
-<img id="car" src="Car.png">
-<img id="car2" src="car2.png">
-<img id="track" src="">
-<img id="background" src="Background.jpg">
+    <h1 id="h1"> score </h1>
+
+    <img id="car" src="gr.png">
+    <img id="car2" src="rg.png">
+    <img id="track" src="Racetrack.png">
+  
+
 
 
 
 </body>
+
 </html>
 <script>
-document.getElementById("car")
- var carx = 1
- var speed = 1
- var speed2 = 1
- var carx2 = 1
+    var carx = 0
+    var speed1 = 1
+    var carx2 = 0
+    var speed2 = 1
+    var car = document.getElementById("car")
+    var car2 = document.getElementById("car2")
+    document.addEventListener("keydown", keydownHandler)
+    document.addEventListener("keydown", keydownHandler2)
+    document.getElementById("h1").innerHTML = "score";
 
 
+    function keydownHandler(e) {     
+        if ("w" === e.key){
+            document.getElementById("car").style.left = carx + "4px"
+            carx = carx + speed1
+           
+        }
+    }
+    function keydownHandler2(e) {
+        if ("m" === e.key){
+            document.getElementById("car2").style.left = carx2 + "4px"
+            carx2 = carx2 + speed2
+        }
+    }
+    function timer(){
+
+    }
  
-
 </script>
