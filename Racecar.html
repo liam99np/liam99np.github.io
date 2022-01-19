@@ -47,7 +47,7 @@
 
 
 <body>
-    <h1 id="h1"> score </h1>
+    <h1 id="timer"> timer </h1>
 
     <img id="car" src="gr.png">
     <img id="car2" src="rg.png">
@@ -65,11 +65,12 @@
     var speed1 = 1
     var carx2 = 0
     var speed2 = 1
+    var time = 0
     var car = document.getElementById("car")
     var car2 = document.getElementById("car2")
     document.addEventListener("keydown", keydownHandler)
     document.addEventListener("keydown", keydownHandler2)
-    document.getElementById("h1").innerHTML = "score";
+    document.getElementById("timer").innerHTML = "timer";
 
 
     function keydownHandler(e) {     
@@ -86,6 +87,8 @@
         }
     }
     function timer(){
+      setInterval(timer, 50)
+      
 
     }
  
