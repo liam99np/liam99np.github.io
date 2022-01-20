@@ -4,7 +4,6 @@
 <head>
 
     <style>
-
         #car {
             position: absolute;
             height: 140px;
@@ -12,7 +11,7 @@
             z-index: 1;
             width: 250px;
             left: 0px;
-        
+
         }
 
         #car2 {
@@ -33,7 +32,7 @@
             max-height: max-content;
             text-align: center;
             font-size: 30px;
-            color: white;
+            color: rgb(245, 13, 13);
         }
 
         #track {
@@ -52,7 +51,7 @@
     <img id="car" src="gr.png">
     <img id="car2" src="rg.png">
     <img id="track" src="Racetrack.png">
-  
+
 
 
 
@@ -65,32 +64,37 @@
     var speed1 = 1
     var carx2 = 0
     var speed2 = 1
-    var time = 0
+    var time = 1
     var car = document.getElementById("car")
     var car2 = document.getElementById("car2")
     document.addEventListener("keydown", keydownHandler)
     document.addEventListener("keydown", keydownHandler2)
     document.getElementById("time")
-    document.getElementById("timer").innerHTML = time;
-    
 
-    function keydownHandler(e) {     
-        if ("w" === e.key){
+
+
+    function keydownHandler(e) {
+        if ("w" === e.key) {
             document.getElementById("car").style.left = carx + "4px"
             carx = carx + speed1
-           
+
         }
     }
     function keydownHandler2(e) {
-        if ("m" === e.key){
+        if ("m" === e.key) {
             document.getElementById("car2").style.left = carx2 + "4px"
             carx2 = carx2 + speed2
         }
     }
     setInterval(timer, 1000)
-    function timer(){
-      time = time + 1
-      
+    function timer() {
+        time = time + 1
+        document.getElementById("timer").innerHTML = time;
+
     }
- 
+    setInterval(win, 100)
+    function win() {
+
+    }
+
 </script>
