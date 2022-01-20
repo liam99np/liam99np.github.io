@@ -70,8 +70,9 @@
     var car2 = document.getElementById("car2")
     document.addEventListener("keydown", keydownHandler)
     document.addEventListener("keydown", keydownHandler2)
-    document.getElementById("timer").innerHTML = "timer";
-
+    document.getElementById("time")
+    document.getElementById("timer").innerHTML = time;
+    
 
     function keydownHandler(e) {     
         if ("w" === e.key){
@@ -86,10 +87,10 @@
             carx2 = carx2 + speed2
         }
     }
+    setInterval(timer, 1000)
     function timer(){
-      setInterval(timer, 50)
+      time = time + 1
       
-
     }
  
 </script>
