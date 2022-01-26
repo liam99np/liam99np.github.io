@@ -24,33 +24,64 @@
         }
 
         body {
-            background-image: url(Background.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
             overflow: hidden;
+        }
+
+        #background {
+            top: 0px;
+            left: 0px;
+            position: absolute;
             max-width: max-content;
             max-height: max-content;
-            text-align: center;
-            font-size: 30px;
-            color: rgb(245, 13, 13);
         }
 
         #track {
+            position: absolute;
             height: 1000px;
-            margin-left: -10px;
-            margin-top: -345px;
+            left: 0px;
+            top: -200px;
             width: 1500px;
+        }
+
+        #popup {
+            position: absolute;
+            top: 5%;
+            left: 20%;
+            width: 20%;
+            display: none;
+            font-size: 35px;
+            color: red;
+        }
+
+        #popup2 {
+            position: absolute;
+            top: 5%;
+            left: 70%;
+            width: 20%;
+            display: none;
+            font-size: 35px;
+            color: red;
+        }
+
+        #timer {
+            position: absolute;
+            left: 50vmax;
+            font-size: 50px;
+            color: red;
         }
     </style>
 </head>
 
 
 <body>
+    <img id="background" src="Background.jpg">
+    <img id="track" src="Racetrack.png">
     <h1 id="timer"> timer </h1>
-
     <img id="car" src="gr.png">
     <img id="car2" src="rg.png">
-    <img id="track" src="Racetrack.png">
+    <div id="popup"> Player 1 Wins!</div>
+    <div id="popup2"> Player 2 Wins!</div>
+    <audio id="driving"> <source src="Driving.mp3"type="Audio/mpeg"> </source> </audio>
 
 
 
@@ -60,30 +91,31 @@
 
 </html>
 <script>
-    var carx = 0
-    var speed1 = 1
-    var carx2 = 0
-    var speed2 = 1
+    var x = 0
+    var x2 = 0
     var time = 1
     var car = document.getElementById("car")
     var car2 = document.getElementById("car2")
-    document.addEventListener("keydown", keydownHandler)
-    document.addEventListener("keydown", keydownHandler2)
+
+    document.addEventListener("keyup", keydownHandler)
     document.getElementById("time")
 
 
 
     function keydownHandler(e) {
         if ("w" === e.key) {
-            document.getElementById("car").style.left = carx + "4px"
-            carx = carx + speed1
-
+            document.getElementById("car").style.left = x + "2px"
+            x = x + 1
+            if (x >= 119) {
+                document.getElementById("popup").style.display = "block"
+            }
         }
-    }
-    function keydownHandler2(e) {
         if ("m" === e.key) {
-            document.getElementById("car2").style.left = carx2 + "4px"
-            carx2 = carx2 + speed2
+            document.getElementById("car2").style.left = x2 + "2px"
+            x2 = x2 + 1
+            if (x2 >= 119) {
+                document.getElementById("popup2").style.display = "block"
+            }
         }
     }
     setInterval(timer, 1000)
@@ -92,9 +124,12 @@
         document.getElementById("timer").innerHTML = time;
 
     }
-    setInterval(win, 100)
-    function win() {
-
+    function carsound() {
+    
     }
+
+
+
+
 
 </script>
