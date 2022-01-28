@@ -4,7 +4,7 @@
 <head>
 
     <style>
-         #button {
+        #button {
             position: absolute;
             left: 40%;
             color: red;
@@ -12,8 +12,9 @@
             top: 40%;
             display: none;
 
-            
+
         }
+
         #car {
             position: absolute;
             height: 140px;
@@ -79,8 +80,10 @@
             font-size: 50px;
             color: red;
         }
-
-       
+        #link {
+            display: block;
+            position: absolute;
+        }
     </style>
 </head>
 
@@ -89,8 +92,11 @@
     <img id="background" src="Background.jpg">
     <img id="track" src="Racetrack.png">
     <h1 id="timer"> timer </h1>
-    <button id="button" onclick="refresh()"> <p1>Great job player,  
-        you <br>can click me to play another</p1></button>
+    <button id="button" onclick="refresh()">
+        <p1>Great job player,
+            you <br>can click me to play another</p1>
+    </button>
+    <button id="link" type="button" onclick="location.href = 'https:liam99np.github.io/Clicker.html';"> ? </button> 
     <img id="car" src="gr.png">
     <img id="car2" src="rg.png">
     <div id="popup"> Player 1 Wins!</div>
@@ -103,7 +109,7 @@
         <source src="Cool.mp3" type="audio/mpeg">
         </source>
     </audio>
-
+    
 
 
 
@@ -117,51 +123,56 @@
     var time = 1
     var car = document.getElementById("car")
     var car2 = document.getElementById("car2")
-
-    document.addEventListener("keydown", keydownHandler)
+    document.addEventListener("keyup", keydownHandler)
     document.getElementById("time")
 
 
-    
     function keydownHandler(e) {
-        if ("w" === e.key) {
-            document.getElementById("car").style.left = x + "2px"
-            x = x + 2
-            document.getElementById("driving")
-            var audio = new Audio("driving.mp3")
-            driving.play();
+        if (document.getElementById("button").style.display === "") {
+            if ("w" === e.key) {
+                document.getElementById("car").style.left = x + "2px"
+                x = x + 2
+                document.getElementById("driving")
+                var audio = new Audio("driving.mp3")
+                driving.play();
+            }
             if (x >= 113) {
+                document.getElementById("button").style.display = "block"
                 document.getElementById("popup").style.display = "block"
                 document.getElementById("cool")
                 var audio = new Audio("Cool.mp3")
                 cool.play();
-                
-            }
-        }
-        if ("m" === e.key) {
-            document.getElementById("car2").style.left = x2 + "2px"
-            x2 = x2 + 2
-            document.getElementById("driving")
-            var audio = new Audio("driving.mp3")
-            driving.play();
-            if (x2 >= 113) {
-                document.getElementById("button").style.display = "block"
-                document.getElementById("popup2").style.display = "block"
-                var audio = new Audio("Cool.mp3")
-                cool.play();
 
             }
-        }
 
+
+            if ("m" === e.key) {
+                document.getElementById("car2").style.left = x2 + "2px"
+                x2 = x2 + 2
+                document.getElementById("driving")
+                var audio = new Audio("driving.mp3")
+                driving.play();
+                if (x2 >= 113) {
+                    document.getElementById("button").style.display = "block"
+                    document.getElementById("popup2").style.display = "block"
+                    var audio = new Audio("Cool.mp3")
+                    cool.play();
+
+                }
+            }
+        }
     }
+
 
     setInterval(timer, 1000)
     function timer() {
         time = time + 1
         document.getElementById("timer").innerHTML = time;
     }
-    function refresh(){
+    function refresh() {
         document.location.reload()
+
     }
+   
 
 </script>
