@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <Style>
+        
+        #canvas {
+            background-color: black;       
+        }
+
+    </Style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1358" height="657" > </canvas>
+    
+</body>
+
+</html>
+<script>
+    var x = 0
+    var y = 0
+    var speedx = 3
+    var speedy = 3
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    ctx.fillStyle = "blue"
+    setInterval(move, 50)
+    function move() {
+        ctx.fillRect(x, y, 100, 100)
+        y = y + speedy
+        x = x + speedx
+        if (x > window.innerWidth) {
+            speedx = speedx * -1
+
+        }
+        if (x < 0) {
+            speedx = speedx * -1
+        }
+
+        if (y > window.innerHeight) {
+            speedy = speedy * -1
+        }
+
+
+        if (y < 0) {
+            speedy = speedy * -1
+        }
+    }
+</script>
