@@ -4,79 +4,97 @@
 <head>
 
     <Style>
-        
         #canvas {
-            background-color: black;    
-               width: 100%;
-               height: 100%;
-              
-             
-        }
+            background-color: black;
+            width: 100%;
+            height: 100%;
 
+
+        }
     </Style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1423" height="770" > </canvas>
-    
+    <canvas id="canvas" width="1423" height="770"> </canvas>
+
 </body>
 
 </html>
 <script>
-    var x = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
-    var y = [1,  25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
-    var speedx = [14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40]
-    var speedy = [32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9,]
+    var x = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 320, 400, 400, 400, 400, 400]
+    var y = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 1,   25,   50,  75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
+    var speedx = [14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31]
+    var speedy = [32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40]
     var canvas = document.getElementById("canvas")
     var ctx = canvas.getContext("2d")
-    ctx.fillStyle = "blue"
+    ctx.fillStyle = "gold"
     setInterval(move, 50)
-
     function move() {
-    ctx.clearRect(0, 0 , 1450,  800 )
-        ctx.fillRect(x[0], y[0], 100, 100)
-        ctx.fillRect(x[1], y[1], 100, 100)
-        ctx.fillRect(x[2], y[2], 100, 100)
-        ctx.fillRect(x[3], y[3], 100, 100)
-        ctx.fillRect(x[4], y[4], 100, 100)
-        ctx.fillRect(x[5], y[5], 100, 100)
-        ctx.fillRect(x[6], y[6], 100, 100)
-        ctx.fillRect(x[7], y[7], 100, 100)
-        ctx.fillRect(x[8], y[8], 100, 100)
-        ctx.fillRect(x[9], y[9], 100, 100)
-        ctx.fillRect(x[10], y[10], 100, 100)
-        ctx.fillRect(x[11], y[11], 100, 100)
-        ctx.fillRect(x[12], y[12], 100, 100)
-        ctx.fillRect(x[13], y[13], 100, 100)
-        ctx.fillRect(x[14], y[14], 100, 100)
-        ctx.fillRect(x[15], y[15], 100, 100)
-        ctx.fillRect(x[16], y[16], 100, 100)
-        ctx.fillRect(x[17], y[17], 100, 100)
-        ctx.fillRect(x[18], y[18], 100, 100)
-        ctx.fillRect(x[19], y[19], 100, 100)
-        ctx.fillRect(x[20], y[20], 100, 100)
-        ctx.fillRect(x[21], y[21], 100, 100)
-       
-        for(i = 0; i < 22; i = i + 1){
+        ctx.clearRect(0, 0, 1450, 800)
+        ctx.fillRect(x[0], y[0], 90, 90)
+        ctx.fillRect(x[1], y[1], 90, 90)
+        ctx.fillRect(x[2], y[2], 90, 90)
+        ctx.fillRect(x[3], y[3], 90, 90)
+        ctx.fillRect(x[4], y[4], 90, 90)
+        ctx.fillRect(x[5], y[5], 90, 90)
+        ctx.fillRect(x[6], y[6], 90, 90)
+        ctx.fillRect(x[7], y[7], 90, 90)
+        ctx.fillRect(x[8], y[8], 90, 90)
+        ctx.fillRect(x[9], y[9], 90, 90)
+        ctx.fillRect(x[10], y[10], 90, 90)
+        ctx.fillRect(x[11], y[11], 90, 90)
+        ctx.fillRect(x[12], y[12], 90, 90)
+        ctx.fillRect(x[13], y[13], 90, 90)
+        ctx.fillRect(x[14], y[14], 90, 90)
+        ctx.fillRect(x[15], y[15], 90, 90)
+        ctx.fillRect(x[16], y[16], 90, 90)
+        ctx.fillRect(x[17], y[17], 90, 90)
+        ctx.fillRect(x[18], y[18], 90, 90)
+        ctx.fillRect(x[19], y[19], 90, 90)
+        ctx.fillRect(x[20], y[20], 90, 90)
+        ctx.fillRect(x[21], y[21], 90, 90)
+        ctx.fillRect(x[22], y[22], 90, 90)
+        ctx.fillRect(x[23], y[23], 90, 90)
+        ctx.fillRect(x[24], y[24], 90, 90)
+        ctx.fillRect(x[25], y[25], 90, 90)
+        ctx.fillRect(x[26], y[26], 90, 90)
+        ctx.fillRect(x[27], y[27], 90, 90)
+        ctx.fillRect(x[28], y[28], 90, 90)
+        ctx.fillRect(x[29], y[29], 90, 90)
+        ctx.fillRect(x[30], y[30], 90, 90)
+        ctx.fillRect(x[31], y[31], 90, 90)
+        ctx.fillRect(x[32], y[32], 90, 90)
+        ctx.fillRect(x[33], y[33], 90, 90)
+        ctx.fillRect(x[34], y[34], 90, 90)
+        ctx.fillRect(x[35], y[35], 90, 90)
+        ctx.fillRect(x[36], y[36], 90, 90)
+        ctx.fillRect(x[37], y[37], 90, 90)
+        ctx.fillRect(x[38], y[38], 90, 90)
+        ctx.fillRect(x[39], y[39], 90, 90)
+        ctx.fillRect(x[40], y[40], 90, 90)
+        ctx.fillRect(x[41], y[41], 90, 90)
+        ctx.fillRect(x[42], y[42], 90, 90)
+        ctx.fillRect(x[43], y[43], 90, 90)
+        for (i = 0; i < 44; i = i + 1) {
             x[i] = x[i] + speedx[i]
             y[i] = y[i] + speedy[i]
-            if (x[i] > 600) {
-            speedx[i] = speedx[i] + -2
+            if (x[i] > 700) {
+                speedx[i] = speedx[i] + -2
 
-        }
-        if (x[i] < 600) {
-            speedx[i] = speedx[i] - -2
-        }
+            }
+            if (x[i] < 700) {
+                speedx[i] = speedx[i] - -2
+            }
 
-        if (y[i] > 300) {
-            speedy[i] = speedy[i] + -2
-        }
+            if (y[i] > 400) {
+                speedy[i] = speedy[i] + -2
+            }
 
 
-        if (y[i] < 300) {
-            speedy[i] = speedy[i] - -2
+            if (y[i] < 400) {
+                speedy[i] = speedy[i] - -2
+            }
         }
     }
-        }
-    
+
 </script>
