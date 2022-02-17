@@ -9,6 +9,8 @@
             background-color: black;    
                width: 100%;
                height: 100%;
+              
+             
         }
 
     </Style>
@@ -21,34 +23,60 @@
 
 </html>
 <script>
-    var x = 0
-    var y = 0
-    var speedx = 3
-    var speedy = 3
+    var x = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
+    var y = [1,  25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
+    var speedx = [14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40]
+    var speedy = [32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9,]
     var canvas = document.getElementById("canvas")
     var ctx = canvas.getContext("2d")
     ctx.fillStyle = "blue"
     setInterval(move, 50)
+
     function move() {
-    ctx.clearRect(0,0 , 1450,  800 )
-        ctx.fillRect(x, y, 100, 100)
-        y = y + speedy
-        x = x + speedx
-        if (x > 1358) {
-            speedx = speedx * -1
+    ctx.clearRect(0, 0 , 1450,  800 )
+        ctx.fillRect(x[0], y[0], 100, 100)
+        ctx.fillRect(x[1], y[1], 100, 100)
+        ctx.fillRect(x[2], y[2], 100, 100)
+        ctx.fillRect(x[3], y[3], 100, 100)
+        ctx.fillRect(x[4], y[4], 100, 100)
+        ctx.fillRect(x[5], y[5], 100, 100)
+        ctx.fillRect(x[6], y[6], 100, 100)
+        ctx.fillRect(x[7], y[7], 100, 100)
+        ctx.fillRect(x[8], y[8], 100, 100)
+        ctx.fillRect(x[9], y[9], 100, 100)
+        ctx.fillRect(x[10], y[10], 100, 100)
+        ctx.fillRect(x[11], y[11], 100, 100)
+        ctx.fillRect(x[12], y[12], 100, 100)
+        ctx.fillRect(x[13], y[13], 100, 100)
+        ctx.fillRect(x[14], y[14], 100, 100)
+        ctx.fillRect(x[15], y[15], 100, 100)
+        ctx.fillRect(x[16], y[16], 100, 100)
+        ctx.fillRect(x[17], y[17], 100, 100)
+        ctx.fillRect(x[18], y[18], 100, 100)
+        ctx.fillRect(x[19], y[19], 100, 100)
+        ctx.fillRect(x[20], y[20], 100, 100)
+        ctx.fillRect(x[21], y[21], 100, 100)
+       
+        for(i = 0; i < 22; i = i + 1){
+            x[i] = x[i] + speedx[i]
+            y[i] = y[i] + speedy[i]
+            if (x[i] > 600) {
+            speedx[i] = speedx[i] + -2
 
         }
-        if (x < 0) {
-            speedx = speedx * -1
+        if (x[i] < 600) {
+            speedx[i] = speedx[i] - -2
         }
 
-        if (y > 657) {
-            speedy = speedy * -1
+        if (y[i] > 300) {
+            speedy[i] = speedy[i] + -2
         }
 
 
-        if (y < 0) {
-            speedy = speedy * -1
+        if (y[i] < 300) {
+            speedy[i] = speedy[i] - -2
         }
     }
+        }
+    
 </script>
