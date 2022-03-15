@@ -2,170 +2,147 @@
 <html>
 
 <head>
-    <h1> Hello</h1>
     <style>
         body {
-            background-color: blue;
-            font-size: 24px;
             overflow: hidden;
-
+        }
+        #path {
+            position: absolute;
+            width: 1440px;
+            height: 792px;
+            left: 0px;
+            top: -3px;
+            overflow: hidden;
         }
 
-
-        h1 {
-            color: aqua;
+        #balloon {
             position: absolute;
-            top: 0%;
-            left: 0%;
-            font-size: 75px;
+            width: 60px;
+            height: 60px;
+            margin-top: 404px;
+            overflow: hidden;
         }
-
-        h2 {
-            font-size: 33px;
+        #popup {
             position: absolute;
-            top: 23%;
+            display: none;
+            left: 45%;
+            top: 41%;
+            font-size: 30px;
             color: red;
         }
-
-        h3 {
-            font-size: 33px;
+        #button {
             position: absolute;
-            top: 22%;
-            left: 35%;
-            color: red;
-        }
-
-        h4 {
-            font-size: 33px;
-            position: absolute;
-            top: 20.5%;
-            left: 80%;
-            color: red;
-        }
-
-        a {
-            color: gold;
-        }
-
-        button {
-            left: 96%;
-            position: absolute;
-            font-size: 10px;
-        }
-
-        p11 {
-            position: absolute;
-            left: 80%;
-            top: 33%;
-            color: gold;
-        }
-
-        p1 {
-            position: absolute;
-            left: 0%;
-            top: 33%;
-            color: gold;
-        }
-
-        p2 {
-            position: absolute;
-            left: 0%;
-            top: 39%;
-            color: gold;
-        }
-
-        p3 {
-            position: absolute;
-            left: 0%;
+            display: none;
+            left: 45%;
             top: 45%;
-            color: gold;
-        }
-
-        p4 {
-            position: absolute;
-            left: 37%;
-            top: 33%;
-            color: gold;
-        }
-
-        p5 {
-            position: absolute;
-            left: 37%;
-            top: 39%;
-            color: gold;
-        }
-
-        p6 {
-            position: absolute;
-            left: 37%;
-            top: 45%;
-            color: gold;
-        }
-
-        p7 {
-            position: absolute;
-            left: 37%;
-            top: 51%;
-            color: gold;
-        }
-
-        p8 {
-            position: absolute;
-            left: 0%;
-            top: 51%;
-            color: gold;
+            font-size: 20px;
+            color: red;
         }
     </style>
 </head>
 
 <body>
-
-    <button id="button" onclick="hello()"> sound on </button>
-
-    <h2> Some games</h2>
-    <p1>
-        <li> <a href="5th.html"> Coming soon!</a> </li>
-    </p1>
-    <p2>
-        <li> <a href="6th.html"> Coming soon!</a> </li>
-    </p2>
-    <p3>
-        <li> <a href="7th.html"> Coming soon!</a> </li>
-    </p3>
-    <p8>
-        <li> <a href="8th.html"> Coming soon! </a> </li>
-    </p8>
-    <h3> More games </h3>
-    <p4>
-        <li> <a href="1st.html"> Gun Mayhem 2 </a> </li>
-    </p4>
-    <p5>
-        <li> <a href="2nd.html"> Rocket League 2d </a> </li>
-    </p5>
-    <p6>
-        <li> <a href="3rd.html"> Slope </a> </li>
-    </p6>
-    <p7>
-        <li> <a href="4th.html"> Basketball Legends </a> </li>
-    </p7>
-    <h4> My Portfolio</h4>
-    <p11>
-        <li> <a href="portfolio.html"> Portfolio</a> </li>
-    </p11>
-    <audio id="cool">
-        <source src="Cool2.mp3" type="audio/mpeg">
-        </source>
-
+    <img src="path1.png" id="path">
+    <img src="balloon.png" id="balloon">
+    <div id="popup"> You lost!</div>
+    <button id="button" onclick="refresh()"> Click here to </br> try again</button>
 </body>
 
 </html>
 <script>
-   function hello() {
-        document.getElementById("cool")
-        var audio = new Audio("Cool2.mp3")
-        cool.play();
-    }
-     
+    var x = 1
+    var y = 1
+    var d = 0
+    var speed = 4
 
+    var balloon = document.getElementById("balloon")
+    document.getElementById("balloon").addEventListener("click", balloonclick)
+    document.getElementById("balloon").style.display = "block"
+    document.getElementById("balloon").style.left = x + "px"
+    document.getElementById("balloon").style.top = y + "px"
+
+    setInterval(df, 20)
+    // setInterval(ds, 50)
+    // setInterval(dl, 50)
+    // possible try if(x[0] === number){
+    //x = x + 4
+    // x[1] = number
+    //}
+    // if (x[1] === number){
+    // y = y + 4
+    // x[2] = number and so on
+    //}
+    
+    function df() {
+        document.getElementById("balloon").style.top = y + "px"
+        document.getElementById("balloon").style.left = x + "px"
+
+        if (d <= 206) {
+            x = x + speed
+            d = d + speed
+        }
+
+        if (d >= 207) {
+            if (d <= 447) {
+                y = y + -speed
+                d = d + speed
+            }
+        }
+        if (d > 447) {
+            if (d <= 735){
+            x = x + speed
+            d = d + speed }
+        }
+        if (d > 735){
+            if (d <= 1051){
+                y = y + speed
+                d = d + speed
+            }
+        }
+        if (d > 1052){
+            if (d <= 1437){
+                x = x + speed
+                d = d + speed
+            }
+        }
+        if (d > 1437){
+            if (d <= 1593){
+                y = y + -speed
+                d = d + speed
+            }
+        }
+        if ( d > 1593){
+            if (d <= 2155){
+                x = x + speed
+                d = d + speed
+            }
+        }
+       if ( d > 2155){
+           x = -5
+           y = -5
+           d = 0
+         //   document.getElementById("popup").style.display = "block"
+         //   document.getElementById("button").style.display = "block"
+        }
+
+    }
+    function balloonclick(e) {
+        speed = speed - 1
+        if (speed === 0){
+           
+        }
+        if (speed < 0){
+            speed = 1
+        }
+    }
+
+
+    function ds() {
+
+
+    }
+   // function refresh(){
+ //       window.location.reload()
+   // }
 
 </script>
