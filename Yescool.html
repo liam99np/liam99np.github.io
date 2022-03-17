@@ -6,7 +6,8 @@
         body {
             overflow: hidden;
         }
-         #score {
+
+        #score {
             position: absolute;
             font-size: 20px;
             top: 90%;
@@ -15,11 +16,12 @@
             color: white;
             font-display: block;
             border-radius: 30%;
-            
-            
-            
-            
+
+
+
+
         }
+
         #path {
             position: absolute;
             width: 1440px;
@@ -27,14 +29,17 @@
             left: 0px;
             top: -3px;
             overflow: hidden;
+            display: none;
         }
 
         #balloon {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 53px;
+            height: 53px;
             margin-top: 404px;
             overflow: hidden;
+            display: none;
+
         }
 
         #popup {
@@ -61,24 +66,29 @@
             height: 60px;
             margin-top: 404px;
             overflow: hidden;
+            display: none;
         }
-       
     </style>
 </head>
 
 <body>
     <img src="path1.png" id="path">
+    <canvas id="canvas" width="1440" height="792"></canvas>
     <img src="balloon.png" id="balloon">
     <img src="popping.png" id="popping">
     <div id="popup"> You lost!</div>
     <button id="button" onclick="refresh()"> Click here to </br> try again</button>
     <div id="score" class="box"> score = 0</div>
+    <audio id="popeffect">
+        <source src="Popeffect.mp3" type="audio/mpeg">
+        </source>
+    </audio>
 </body>
 
 </html>
 <script>
     var x = 1
-    var y = 1
+    var y = 404
     var d = 0
     var speed = 4
     var popped = false
@@ -86,68 +96,66 @@
     var score = 0
     var balloon = document.getElementById("balloon")
     var popping = document.getElementById("popping")
-    document.getElementById("balloon").addEventListener("click", balloonclick)
-    document.getElementById("balloon").style.display = "block"
-    document.getElementById("popping").style.display = "none"
+    var path = document.getElementById("path")
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    document.getElementById("canvas").addEventListener("click", balloonclick)
     document.getElementById("balloon").style.left = x + "px"
     document.getElementById("balloon").style.top = y + "px"
 
-    setInterval(pop, 20)
+
     setInterval(df, 20)
-    // setInterval(ds, 50)
-    // setInterval(dl, 50)
-    // possible try if(x[0] === number){
-    //x = x + 4
-    // x[1] = number
-    //}
-    // if (x[1] === number){
-    // y = y + 4
-    // x[2] = number and so on
-    //}
-    function pop() {
-        if (speed <= 0) {
-            if (popped === false) {
-                count = 2
-                popped = true
-                score = score + 1
-                document.getElementById("score").innerText = "score = "  + score
-            }
-            if (count > 0) {
-                document.getElementById("balloon").style.display = "none"
-                document.getElementById("popping").style.top = y + "px"
-                document.getElementById("popping").style.left = x + "px"
-                document.getElementById("popping").style.display = "block"
-                count = count - 1
-            }
-            if (count <= 1) {
-                
-                document.getElementById("popping").style.display = "none"
-                
-                
-            }
-        }
-        if (balloon.style.display === "none") {
-            balloon.style.display = "block"
-            speed = 4
-            x = 1
-            y = 1
-            d = 0
-            popped = false
-        }
-    }
+    
+
 
     function df() {
-        document.getElementById("balloon").style.top = y + "px"
-        document.getElementById("balloon").style.left = x + "px"
+        ctx.drawImage(path, 0, 0, 1440, 792)
+
+        if (speed > 0) {
+            ctx.drawImage(balloon, x, y, 53, 53);
+        }
+
+        if (speed <= 0) { //speed getting to zero means the baloon needs to pop
+            if (popped === false) { //this should run the first time that speed goes to zero, and only the first time
+                count = 2   //this is the number of frames you want the pop to show up for
+                score = score + 1
+                popped = true //set popped to true so this if doesn't run again
+                document.getElementById("score").innerText = "score = " + score
+            }
+            if (count > 0) { //this only runs after the first if has run, so this runs while speed is zero but after the first if
+                ctx.drawImage(popping, x, y, 53, 53)
+                var audio = new Audio("Popeffect.mp3")
+                popeffect.play();
+                count = count - 1 //counting down to zero
+
+
+            }
+            if (count <= 0) { //once count gets to zero get rid of the popped picture
+                document.getElementById("popping").style.display = "none"
+
+
+
+            }
+
+            if (balloon.style.display === "none") {
+                balloon.style.display = "block"
+                speed = 4
+                x = 0
+                y = 404
+                d = 0
+                popped = false
+            }
+        }
+
 
         if (d >= 0) {
-            if (d <= 206) {
+            if (d <= 210) {
                 x = x + speed
                 d = d + speed
             }
         }
 
-        if (d >= 207) {
+        if (d >= 210) {
             if (d <= 447) {
                 y = y + -speed
                 d = d + speed
@@ -160,12 +168,12 @@
             }
         }
         if (d > 735) {
-            if (d <= 1051) {
+            if (d <= 1054) {
                 y = y + speed
                 d = d + speed
             }
         }
-        if (d > 1051) {
+        if (d > 1054) {
             if (d <= 1437) {
                 x = x + speed
                 d = d + speed
@@ -185,7 +193,7 @@
         }
         if (d > 2155) {
             x = -5
-            y = -5
+            y = 404
             d = 0
             //   document.getElementById("popup").style.display = "block"
             //   document.getElementById("button").style.display = "block"
@@ -193,7 +201,17 @@
 
     }
     function balloonclick(e) {
-        speed = speed - 1
+
+        if (e.offsetX > x) {
+            if (e.offsetX < x + 53) {
+                if (e.offsetY > y) {
+                    if (e.offsetY < y + 53) {
+                       speed = speed - 1
+                    }
+                }
+            }
+        }
+
 
     }
 
