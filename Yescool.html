@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="#">
     <style>
         body {
             overflow: hidden;
@@ -79,10 +80,8 @@
     <div id="popup"> You lost!</div>
     <button id="button" onclick="refresh()"> Click here to </br> try again</button>
     <div id="score" class="box"> score = 0</div>
-    <audio id="popeffect">
-        <source src="Popeffect.mp3" type="audio/mpeg">
-        </source>
-    </audio>
+    <audio id="popeffect"> </audio><source src="Popeffect.mp3" type="audio/mpeg"> </source></audio>
+    <audio id="loser">  <source src="Loser.mp3" type ="audio/mpeg"> </source> </audio>
 </body>
 
 </html>
@@ -99,114 +98,123 @@
     var path = document.getElementById("path")
     var canvas = document.getElementById("canvas")
     var ctx = canvas.getContext("2d")
+    var buttton = 5
     document.getElementById("canvas").addEventListener("click", balloonclick)
     document.getElementById("balloon").style.left = x + "px"
     document.getElementById("balloon").style.top = y + "px"
-
-
     setInterval(df, 20)
+
+
     
+        function df() {
+            if (buttton === 5) {
+            ctx.drawImage(path, 0, 0, 1440, 792)
 
-
-    function df() {
-        ctx.drawImage(path, 0, 0, 1440, 792)
-
-        if (speed > 0) {
-            ctx.drawImage(balloon, x, y, 53, 53);
-        }
-
-        if (speed <= 0) { //speed getting to zero means the baloon needs to pop
-            if (popped === false) { //this should run the first time that speed goes to zero, and only the first time
-                count = 2   //this is the number of frames you want the pop to show up for
-                score = score + 1
-                popped = true //set popped to true so this if doesn't run again
-                document.getElementById("score").innerText = "score = " + score
-            }
-            if (count > 0) { //this only runs after the first if has run, so this runs while speed is zero but after the first if
-                ctx.drawImage(popping, x, y, 53, 53)
-                var audio = new Audio("Popeffect.mp3")
-                popeffect.play();
-                count = count - 1 //counting down to zero
-
-
-            }
-            if (count <= 0) { //once count gets to zero get rid of the popped picture
-                document.getElementById("popping").style.display = "none"
-
-
-
+            if (speed > 0) {
+                ctx.drawImage(balloon, x, y, 53, 53);
             }
 
-            if (balloon.style.display === "none") {
-                balloon.style.display = "block"
-                speed = 4
-                x = 0
-                y = 404
-                d = 0
-                popped = false
-            }
-        }
+            if (speed <= 0) { //speed getting to zero means the baloon needs to pop
+                if (popped === false) { //this should run the first time that speed goes to zero, and only the first time
+                    count = 2   //this is the number of frames you want the pop to show up for
+                    score = score + 1
+                    popped = true //set popped to true so this if doesn't run again
+                    document.getElementById("score").innerText = "score = " + score
+                }
+                if (count > 0) { //this only runs after the first if has run, so this runs while speed is zero but after the first if
+                    ctx.drawImage(popping, x, y, 53, 53)
+                    var audio = new Audio("Popeffect.mp3")
+                    popeffect.play();
+                    count = count - 1 //counting down to zero
 
 
-        if (d >= 0) {
-            if (d <= 210) {
-                x = x + speed
-                d = d + speed
-            }
-        }
+                }
+                if (count <= 0) { //once count gets to zero get rid of the popped picture
+                    document.getElementById("popping").style.display = "none"
 
-        if (d >= 210) {
-            if (d <= 447) {
-                y = y + -speed
-                d = d + speed
+
+
+                }
+
+                if (balloon.style.display === "none") {
+                    balloon.style.display = "block"
+                    speed = 4
+                    x = 0
+                    y = 404
+                    d = 0
+                    popped = false
+                }
             }
-        }
-        if (d > 447) {
-            if (d <= 735) {
-                x = x + speed
-                d = d + speed
+
+
+            if (d >= 0) {
+                if (d <= 210) {
+                    x = x + speed
+                    d = d + speed
+                }
             }
-        }
-        if (d > 735) {
-            if (d <= 1054) {
-                y = y + speed
-                d = d + speed
+
+            if (d >= 210) {
+                if (d <= 447) {
+                    y = y + -speed
+                    d = d + speed
+                }
             }
-        }
-        if (d > 1054) {
-            if (d <= 1437) {
-                x = x + speed
-                d = d + speed
+            if (d > 447) {
+                if (d <= 735) {
+                    x = x + speed
+                    d = d + speed
+                }
             }
-        }
-        if (d > 1437) {
-            if (d <= 1593) {
-                y = y + -speed
-                d = d + speed
+            if (d > 735) {
+                if (d <= 1054) {
+                    y = y + speed
+                    d = d + speed
+                }
             }
-        }
-        if (d > 1593) {
-            if (d <= 2155) {
-                x = x + speed
-                d = d + speed
+            if (d > 1054) {
+                if (d <= 1437) {
+                    x = x + speed
+                    d = d + speed
+                }
             }
-        }
+            if (d > 1437) {
+                if (d <= 1593) {
+                    y = y + -speed
+                    d = d + speed
+                }
+            }
+            if (d > 1593) {
+                if (d <= 2155) {
+                    x = x + speed
+                    d = d + speed
+                }
+            }
+        
         if (d > 2155) {
             x = -5
             y = 404
             d = 0
-            //   document.getElementById("popup").style.display = "block"
-            //   document.getElementById("button").style.display = "block"
-        }
+            document.getElementById("balloon").style.display = "none"
+            document.getElementById("popup").style.display = "block"
+            document.getElementById("button").style.display = "block"
+            buttton = 3
 
+        }
+     }
     }
+    if (buttton === 3){
+        var audio = newAudio(Loser.mp3)
+        loser.play
+    }
+    
     function balloonclick(e) {
 
         if (e.offsetX > x) {
             if (e.offsetX < x + 53) {
                 if (e.offsetY > y) {
                     if (e.offsetY < y + 53) {
-                       speed = speed - 1
+                        speed = speed - 1
                     }
                 }
             }
@@ -220,8 +228,9 @@
 
 
     }
-   // function refresh(){
- //       window.location.reload()
-   // }
+
+    function refresh() {
+        window.location.reload()
+    }
 
 </script>
