@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="#">
+    <Style>
+        
+    </Style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1800" height="970"> </canvas>
+    
+
+</html>
+<script>
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+
+    setInterval(update , 0)
+
+    var increment = (Math.PI * 2) / 1000 //the angle between dots
+    var angle = 0   //angle betweent the current dot and the beginning
+
+    function update(){
+        ctx.clearRect(190,190,140,100)
+        var x = Math.cos(angle) * 100 + 400
+        var y = Math.sin(angle) * 100 + 400
+        angle = angle + increment
+        ctx.fillRect(x,y,2,2)
+
+        var calcuatedAngle = Math.atan2(y - 400,x - 400) //y is first, not x, don't let it fool ya. 
+        //this gives you the angle between your dot and the center of the circle
+        //normally y and x would be the difference between the two ys and x's of the things your comparing
+        //so like the oragin of the circle is 400,400
+        // so we subtract that from the new x and y we are getting and the result is the angle
+
+        ctx.fillText((calcuatedAngle * 180 / Math.PI),200,200)
+
+
+
+        var newx = Math.cos(calcuatedAngle) * 100 + 700
+        var newy = Math.sin(calcuatedAngle) * 100 + 400
+
+        ctx.fillRect(newx,newy,2,2)
+    }
+    </script>

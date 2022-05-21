@@ -98,13 +98,13 @@
 
 </html>
 <script>
-    var x = 1
-    var y = 404
-    var d = 0
-    var speed = 4
-    var health = 5
-    var popped = false
-    var count = 0
+    var x = [1]
+    var y = [404]
+    var d = [0]
+    var speed = [4]
+    var health = [5]
+    var popped = [false]
+    var count = [0]
     var score = 0
     var balloon = document.getElementById("balloon")
     var popping = document.getElementById("popping")
@@ -119,10 +119,13 @@
     
 
     
-        function df() {
+        function df() { 
+            for (var i = 0; i < 5; i = i + 1){
+
+            }
             if (buttton === 5) {
             ctx.drawImage(path, 0, 0, 1440, 792)
-            ctx.fillRect(10, 700, health / 5 * 100, 10)
+            ctx.fillRect(x[i], y[i], health[i] / 5 * 55, 10)
             ctx.fillStyle = "aqua"
 
             if (health > 0) {
@@ -160,7 +163,7 @@
                     popped = false
                 }
             }
-            if (score === 50){
+            if (score >= 50){
 
             }
 

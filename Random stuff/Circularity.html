@@ -2,112 +2,236 @@
 <html>
 
 <head>
-
+    <link rel="shortcut icon" href="#">
     <Style>
         #canvas {
             background-color: black;
-            width: 100%;
-            height: 100%;
+            overflow: hidden;
+            border: 0px;
+            padding: 0px;
+            cursor: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+        }
+
+        #fpsc {
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            font-weight: bolder;
+        }
+
+        #popup {
+            display: none;
+            position: absolute;
+        }
+
+        img {
+            display: none;
+        }
+
+        #score {
+            position: absolute;
+            left: 45%;
+            top: 90%;
+            color: white;
         }
     </Style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1423" height="770"> </canvas>
+    <canvas id="canvas" width="1800" height="970"> </canvas>
+    <a href="javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()"
+        id="fpsc"> Click for fps</a>
+    <h1 id="score"> score = 0 </h1>
 
-</body>
+    <body>
+        <img src="/download (1).png" id="image">
+    </body>
 
 </html>
 <script>
-    
-    var x = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 320, 400, 400, 400, 400, 400]
-    var y = [1, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 1,   25,   50,  75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525]
-    var speedx = [14, 45, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31]
-    var speedy = [32, 45, 14, 12, 8, 13, 9, 10, 15, 23, 40, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 14, 8, 10, 4, 34, 22, 18, 5, 17, 31, 9, 32, 31, 14, 12, 8, 13, 9, 10, 15, 23, 40]
+    var x = []
+    var y = []
+    var speedx = []
+    var speedy = []
+    var mousex = 0
+    var mousey = 0
     var canvas = document.getElementById("canvas")
+    var picture = document.getElementById("image")
+    var radius = []
     var ctx = canvas.getContext("2d")
-   
-    ctx.fillStyle = "#FF0000"
+    var color = []
+    var score = 0
+    var mouseRadius = 10
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    document.getElementById("score")
+
+    canvas.addEventListener("mousemove", mouse)
     setInterval(move, 50)
+    function mouse(event) {
+        mousex = event.offsetX
+        mousey = event.offsetY
+
+    }
+    for (var i = 0; i < 100; i = i + 1) {
+        x.push(Math.random() * 2000)
+        y.push(Math.random() * -20)
+        radius.push(Math.random() * 105)
+        speedx.push(Math.random() * 16 - 10)
+        speedy.push(Math.random() * 10 + 5)
+        color.push("hsl(" + Math.random() * 360 + ", 100%, 50%) ")
+
+
+    }
+
     function move() {
-        ctx.clearRect(  0, 0, 1450, 800)
-        ctx.fillRect(x[0], y[0], 90, 90)
-        ctx.fillRect(x[1], y[1], 90, 90)
-        ctx.fillRect(x[2], y[2], 90, 90)
-        ctx.fillRect(x[3], y[3], 90, 90)
-        ctx.fillRect(x[4], y[4], 90, 90)
-        ctx.fillRect(x[5], y[5], 90, 90)
-        ctx.fillRect(x[6], y[6], 90, 90)
-        ctx.fillRect(x[7], y[7], 90, 90)
-        ctx.fillRect(x[8], y[8], 90, 90)
-        ctx.fillRect(x[9], y[9], 90, 90)
-        ctx.fillRect(x[10], y[10], 90, 90)
-        ctx.fillRect(x[11], y[11], 90, 90)
-        ctx.fillRect(x[12], y[12], 90, 90)
-        ctx.fillRect(x[13], y[13], 90, 90)
-        ctx.fillRect(x[14], y[14], 90, 90)
-        ctx.fillRect(x[15], y[15], 90, 90)
-        ctx.fillRect(x[16], y[16], 90, 90)
-        ctx.fillRect(x[17], y[17], 90, 90)
-        ctx.fillRect(x[18], y[18], 90, 90)
-        ctx.fillRect(x[19], y[19], 90, 90)
-        ctx.fillRect(x[20], y[20], 90, 90)
-        ctx.fillRect(x[21], y[21], 90, 90)
-        ctx.fillRect(x[22], y[22], 90, 90)
-        ctx.fillRect(x[23], y[23], 90, 90)
-        ctx.fillRect(x[24], y[24], 90, 90)
-        ctx.fillRect(x[25], y[25], 90, 90)
-        ctx.fillRect(x[26], y[26], 90, 90)
-        ctx.fillRect(x[27], y[27], 90, 90)
-        ctx.fillRect(x[28], y[28], 90, 90)
-        ctx.fillRect(x[29], y[29], 90, 90)
-        ctx.fillRect(x[30], y[30], 90, 90)
-        ctx.fillRect(x[31], y[31], 90, 90)
-        ctx.fillRect(x[32], y[32], 90, 90)
-        ctx.fillRect(x[33], y[33], 90, 90)
-        ctx.fillRect(x[34], y[34], 90, 90)
-        ctx.fillRect(x[35], y[35], 90, 90)
-        ctx.fillRect(x[36], y[36], 90, 90)
-        ctx.fillRect(x[37], y[37], 90, 90)
-        ctx.fillRect(x[38], y[38], 90, 90)
-        ctx.fillRect(x[39], y[39], 90, 90)
-        ctx.fillRect(x[40], y[40], 90, 90)
-        ctx.fillRect(x[41], y[41], 90, 90)
-        ctx.fillRect(x[42], y[42], 90, 90)
-        ctx.fillRect(x[43], y[43], 90, 90)
-        for (i = 0; i < 44; i = i + 1) {
+        ctx.clearRect(0, 0, 1800, 1000)
+        for (i = 0; i < x.length; i = i + 1) {
+            ctx.fillStyle = color[i]
+            //ctx.fillRect(x[i], y[i], 90, 90)
+            ctx.beginPath()
+            ctx.arc(x[i], y[i], radius[i], 0, Math.PI * 2)
+            ctx.fill()
             x[i] = x[i] + speedx[i]
             y[i] = y[i] + speedy[i]
-            if (x[i] > 700) {
-                speedx[i] = speedx[i] + -2
+            var a = x[i] - mousex
+            var b = y[i] - mousey
+            var distance = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+            if (distance <= radius[i] + mouseRadius) {
+                speedx[i] = speedx[i] * -1
+                speedy[i] = speedy[i] * -1
+                if (mouseRadius < radius[i]) {
+                    ctx.font = "30px Arial"
+                    ctx.fillStyle = "white"
+                    ctx.fillText("you dead", 670, 394.5)
+                    document.getElementById("score").innerHTML = score;
+
+                }
+                if (mouseRadius >= radius[i]) {
+                    if (radius[i] <= 15) {
+                        mouseRadius = mouseRadius + 1
+                        score = score + 1
+                        document.getElementById("score").innerHTML = score;
+                        x.splice(i, 1)
+                        y.splice(i, 1)
+                        radius.splice(i, 1)
+                        speedx.splice(i, 1)
+                        speedy.splice(i, 1)
+                        color.splice(i, 1)
+                    }
+
+                    if (radius[i] <= 25) {
+                        if (radius[i] > 16) {
+                            mouseRadius = mouseRadius + 5
+                            score = score + 5
+                            document.getElementById("score").innerHTML = score;
+                            x.splice(i, 1)
+                            y.splice(i, 1)
+                            radius.splice(i, 1)
+                            speedx.splice(i, 1)
+                            speedy.splice(i, 1)
+                            color.splice(i, 1)
+                        }
+                    }
+                    if (radius[i] <= 40) {
+                        if (radius[i] > 26) {
+                            mouseRadius = mouseRadius + 10
+                            score = score + 10
+                            document.getElementById("score").innerHTML = score;
+                            x.splice(i, 1)
+                            y.splice(i, 1)
+                            radius.splice(i, 1)
+                            speedx.splice(i, 1)
+                            speedy.splice(i, 1)
+                            color.splice(i, 1)
+                        }
+                    }
+                    if (radius[i] <= 70) {
+                        if (radius[i] > 41) {
+                            mouseRadius = mouseRadius + 15
+                            score = score + 15
+                            document.getElementById("score").innerHTML = score;
+                            x.splice(i, 1)
+                            y.splice(i, 1)
+                            radius.splice(i, 1)
+                            speedx.splice(i, 1)
+                            speedy.splice(i, 1)
+                            color.splice(i, 1)
+                        }
+                    }
+                    if (radius[i] <= 105) {
+                        if (radius[i] > 71) {
+                            mouseRadius = mouseRadius + 20
+                            score = score + 20
+                            document.getElementById("score").innerHTML = score;
+                            x.splice(i, 1)
+                            y.splice(i, 1)
+                            radius.splice(i, 1)
+                            speedx.splice(i, 1)
+                            speedy.splice(i, 1)
+                            color.splice(i, 1)
+                        }
+                    }
+
+                }
+
+
+
 
             }
-            if (x[i] < 700) {
-                speedx[i] = speedx[i] - -2
-            }
 
-            if (y[i] > 400) {
-                speedy[i] = speedy[i] + -2
-            }
-
-
-            if (y[i] < 400) {
-                speedy[i] = speedy[i] - -2
-            }
         }
+
+
+        if (x[i] > 1400) {
+            speedx[i] = speedx[i] * -1
+
+        }
+        if (x[i] < 0) {
+            speedx[i] = speedx[i] * -1
+        }
+
+        if (y[i] > 975) {
+            x[i] = (Math.random() * 2000)
+            y[i] = (Math.random() * -200)
+        }
+
+
+        // if (y[i] < 400) {
+        //     speedy[i] = speedy[i] * -2
+        // }
+
+        ctx.fillStyle = "white"
+        ctx.drawImage(picture, mousex - mouseRadius, mousey - mouseRadius, mouseRadius * 2, mouseRadius * 2)
+        //ctx.beginPath()
+        //ctx.arc(mousex, mousey, mouseRadius, 30, 17)
+        //ctx.fill()
     }
     function draw() {
-  var canvas = document.getElementById('canvas');
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
+        var canvas = document.getElementById('canvas');
 
-    ctx.beginPath();
-    ctx.moveTo(75, 50);
-    ctx.lineTo(100, 75);
-    ctx.lineTo(100, 25);
-    ctx.fill();
-  }
-}
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+
+            ctx.beginPath();
+            ctx.moveTo(75, 50);
+            ctx.lineTo(100, 75);
+            ctx.lineTo(100, 25);
+            ctx.fill();
+        }
+    }
+
+
+
+
+
+
+
 
 
 </script>

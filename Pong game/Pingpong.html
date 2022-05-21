@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<link rel="shortcut icon" href="#">
+
+<head>
+    <style>
+        body {
+            overflow: hidden;
+
+        }
+
+        #background {
+            position: absolute;
+            width: 1500px;
+            left: -10px;
+            top: -211px;
+
+        }
+
+        #paddle1 {
+            position: absolute;
+            left: 1%;
+            color: red;
+            display: block;
+            height: 140px;
+            width: 20px;
+        }
+
+        #paddle2 {
+            position: absolute;
+            left: 98%;
+            height: 140px;
+            width: 20px;
+            color: aqua;
+        }
+
+        #ball {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            color: chartreuse;
+            width: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <img src="Black background.png" id="background">
+    <img src="paddle1.png" id="paddle1">
+    <img src="paddle2.png" id="paddle2">
+    <img src="ball.png" id="ball">
+
+
+</body>
+
+</html>
+<script>
+    var paddle1 = document.getElementById("paddle1")
+    var paddle2 = document.getElementById("paddle2")
+    var ball = document.getElementById("ball")
+    var x =125
+	var y  = 5
+	var xspeed= 0
+	var yspeed=0
+	var wpres = false
+	var dpres = false
+	var apres = false
+	var spres = false
+	var friction = 1
+	var acceleration = 4 //ammount that gets added each frame to the speed when you press a button
+	var frictionBoundry = 0.5
+	var maxSpeed = 10
+	
+	document.addEventListener("keydown", keydownpress,false)
+	document.addEventListener("keyup", keyuppress,false)
+	setInterval(update, 50)
+   
+	function keydownpress(e){
+		if(e.key === "w"){
+			wpres = true
+		}
+		if(e.key === "a"){
+			apres = true
+		}
+		if(e.key === "s"){
+			spres = true
+		}
+		if(e.key === "d"){
+			dpres = true
+		}
+			
+	}
+	function keyuppress(e){
+		if(e.key === "w"){
+			wpres = false
+		}
+		if(e.key === "a"){
+			apres = false
+		}
+		if(e.key === "s"){
+			spres = false
+		}
+		if(e.key === "d"){
+			dpres = false
+		}
+	}
+    function update(){
+        document.getElementById("paddle1").style.top = yspeed - acceleration
+
+		frictionCode()
+		x = x + xspeed
+		y = y + yspeed
+		maxSpeedCode()
+
+		if(wpres === true){
+			yspeed = yspeed - acceleration	
+		}
+		if(apres === true){
+			xspeed = xspeed - acceleration
+		}
+		if(spres === true){
+			yspeed = yspeed + acceleration
+		}
+		if(dpres === true){
+			xspeed = xspeed + acceleration
+		}
+	
+	
+		
+	}
+    function maxSpeedCode(){
+		if(xspeed > maxSpeed){ //you have to regulate both forwards and backwards speed
+			xspeed = maxSpeed
+		}else if(xspeed < -maxSpeed){
+			xspeed = -maxSpeed
+		}
+		if(yspeed > maxSpeed){ //you have to regulate both forwards and backwards speed
+			yspeed = maxSpeed
+		}else if(yspeed < -maxSpeed){
+			yspeed = -maxSpeed
+		}
+	}
+
+	function frictionCode(){
+		if(xspeed > frictionBoundry){ //check if the speed is positive or negative. 
+			xspeed = xspeed - friction
+		}else if(xspeed < -frictionBoundry){ //
+			xspeed = xspeed + friction
+		}else{ //if the speed is inbetween the boudnry, which should be some small number, then just set it to zero, otherwise it never stops moving.
+			xspeed = 0 //to figure out why we need this set the friciton boundry to 0 and set the friction a bit higher
+		}//even at low frictions, the box will continue to move a bit and never actually stop.
+		
+        
+        if(yspeed > frictionBoundry){ //check if the speed is positive or negative. 
+			yspeed = yspeed - friction
+		}else if(yspeed < -frictionBoundry){
+			yspeed = yspeed + friction
+		}else{
+			yspeed = 0
+		}
+	}
+</script>

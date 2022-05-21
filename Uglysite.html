@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Gamer site </title>
+    <style>
+        #backgroundImage {
+            height: 103%;
+            width: 103%;
+            left: -3%;
+            top: -3%;
+            z-index: -5;
+            position: absolute;
+            opacity: 30%;
+            animation-name: example;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        h1 {
+            left: 30%;
+            position: absolute;
+            width: 30%;
+            top: -1%;
+        }
+
+        h2 {
+            position: absolute;
+            width: 30%;
+            left: 42%;
+        }
+
+        h3 {
+            position: absolute;
+            width: 30%;
+            left: 48%;
+            top: -1%;
+        }
+
+        #home {
+            left: 65%;
+            top: 10%;
+            position: absolute;
+        }
+
+        #h {
+            left: 23%;
+            top: 45%;
+            position: absolute;
+        }
+
+        #b {
+            left: 13%;
+            top: 93%;
+            position: absolute;
+        }
+
+        #x {
+            left: 63%;
+            top: 55%;
+            position: absolute;
+        }
+
+        #button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+        }
+
+        @keyframes example {
+            0% {
+                background-color: red;
+                height: 200vh;
+                width: 200vw;
+              
+            }
+
+            20% {
+                background-color: yellow;
+                height: 100vh;
+                width: 100vw;
+     
+            }
+
+            40% {
+                background-color: green;
+                height: 200vh;
+                width: 200vw;
+          
+            }
+
+            60% {
+                background-color: brown;
+                height: 100vh;
+                width: 100vw;
+ 
+            }
+
+            80% {
+                background-color: black;
+                height: 200vh;
+                width: 200vw;
+           
+            }
+
+            100% {
+                background-color: white;
+                height: 100vh;
+                width: 100vw;
+   
+            }
+
+        }
+        body{
+            animation-name: example1;
+            animation-duration: .1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes example1 {
+            0% {
+                background-color: red;
+               
+            }
+
+            20% {
+                background-color: yellow;
+             
+            }
+
+            40% {
+                background-color: green;
+         
+        
+            }
+
+            60% {
+                background-color: brown;
+              
+            }
+
+            80% {
+                background-color: rgb(0, 183, 255);
+               
+            }
+
+            100% {
+                background-color: rgb(255, 0, 149);
+             
+            }
+
+        }
+        #button2 {
+            position: absolute;
+        }
+
+
+    </style>
+<button id= "button2" onclick= "stop()"> PLEASE STOP </button>
+</head>
+
+<body>
+    <img id="backgroundImage" src="download (1).png">
+    <div id="all-contents">
+        <button id=button onclick="yes()"> Just don't even click this. </button>
+        <a href="javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()"
+            id="fpsc"> Click for fps</a>
+        <nav>
+            <h1>Epic gam </h1>
+
+            <h2> er <break></break> s</h2>
+            <h3> ite</h3>
+            <UL>
+                <li>
+                    <a id=home href="in.html"> Home </a>
+                </li>
+
+                <li> <a id=h href="yid.html"> clilcer</a>
+
+                </li>
+                <li> <a id=b href="Racecaar.html"> racecar game</a></li>
+                <li> <a id=x href="Random Stuarity.html"> My favrite geame</a></li>
+            </UL>
+        </nav>
+        <main>
+            <div class="sidebar">
+
+            </div>
+            <div class="content">
+                <div class="porftolio">
+                    <h5> <b>PORTFOLIO</b></h5>
+                    <ul>
+                        <li>gteu5 </li>
+                    </ul>
+                </div>
+
+        </main>
+    </div>
+</body>
+
+</html>
+<script>
+    var button = document.getElementById("button").innerText = "Don't click it"
+    var a = 0
+    function yes() {
+        a = a + 1
+        if (a === 1) {
+            document.getElementById("button").innerText = "Please don't"
+        }
+        if (a === 2) {
+            document.getElementById("button").innerText = "I'm warning you, don't do it"
+        }
+        if (a === 3) {
+            alert("I warned you, so stubborn")
+            var txt = "a";
+            while (1) {
+                txt = txt += "a";
+            }
+        }
+    }
+    function stop(){
+   alert("Ah yes, you have saved yourself, or just until you hit the ok button.")
+    }
+</script>

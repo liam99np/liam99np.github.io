@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="#">
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #score {
+            position: absolute;
+            font-size: 20px;
+            top: 90%;
+            left: 45%;
+            border: 10px solid white;
+            color: white;
+            font-display: block;
+            border-radius: 30%;
+        }
+
+        #health {
+            position: absolute;
+            font-size: 20px;
+            top: 90%;
+            left: 37%;
+            border: 10px solid white;
+            color: white;
+            font-display: block;
+            border-radius: 30%;
+        }
+
+        #path {
+            position: absolute;
+            width: 1440px;
+            height: 792px;
+            left: 0px;
+            top: -3px;
+            overflow: hidden;
+            display: none;
+        }
+
+        #balloon {
+            position: absolute;
+            width: 53px;
+            height: 53px;
+            margin-top: 404px;
+            overflow: hidden;
+            display: none;
+
+        }
+
+        #popup {
+            position: absolute;
+            display: none;
+            left: 45%;
+            top: 39%;
+            font-size: 30px;
+            color: red;
+        }
+
+        #button {
+            position: absolute;
+            display: none;
+            left: 45%;
+            top: 45%;
+            font-size: 20px;
+            color: red;
+        }
+
+        #popping {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            margin-top: 404px;
+            overflow: hidden;
+            display: none;
+        }
+
+        #canvas {
+            padding: 0px;
+            margin: 0px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="path1.png" id="path">
+    <canvas id="canvas" width="1440" height="792"></canvas>
+    <img src="balloon.png" id="balloon">
+    <img src="popping.png" id="popping">
+    <div id="popup"> You lost!</div>
+    <button id="button" onclick="refresh()"> Click here to </br> try again</button>
+    <div id="score" class="box"> score = 0</div>
+    <audio id="popeffect">
+        <source src="Popeffect.mp3" type="audio/mpeg">
+        </source>
+    </audio>
+    <audio id="Loser">
+        <source src="Loser.mp3" type="audio/mpeg">
+        </source>
+    </audio>
+</body>
+
+</html>
+<script>
+    var x = [1]
+    var y = [404]
+    var d = [0]
+    var speed = 4
+    var health = [5]
+    var popped = [false]
+    var count = [0]
+    var score = 0
+    var createNewBaloonCount = 0
+    var balloon = document.getElementById("balloon")
+    var popping = document.getElementById("popping")
+    var path = document.getElementById("path")
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var buttton = 5
+    document.getElementById("canvas").addEventListener("click", balloonclick)
+    document.getElementById("balloon").style.left = x[0] + "px"
+    document.getElementById("balloon").style.top = y[0] + "px"
+    setInterval(df, 20)
+
+
+
+    function df() {
+        if(createNewBaloonCount > 50){ //count up to fifty to add a new baloon, every fifty frames you make a enw one. 
+            createNewBaloonCount = 0
+            x.push(1)
+            y.push(404)
+            health.push(5)
+            popped.push(false)
+            count.push(0)
+            d.push(0)
+        }
+        createNewBaloonCount = createNewBaloonCount + 1
+
+        //literally all I did was change the variables like I did up there by making them arrays
+        //then I put everything in a for loop so it does it for every baloon. 
+        ctx.drawImage(path, 0, 0, 1440, 792) //this has to be out of the for loop so taht it works. 
+        //basiclly instead of just moving one baloon we are moving all of them
+        //each loop you are moving baloon i.
+
+        for (var i = 0; i < x.length; i = i + 1) { //this is the loop that goes through all of your balloons. .length gives you the ammount of items in an array. So x.length gives you the ammount of balloons, since every baloon has an x
+            if (buttton === 5) { 
+
+                ctx.fillRect(x[i], y[i], health[i] / 5 * 55, 10)
+                ctx.fillStyle = "pink"
+                if (health[i] > 0) {
+                    ctx.drawImage(balloon, x[i], y[i] + 1, 53, 53);
+                }
+
+                if (health[i] <= 0) { //speed getting to zero means the balloon needs to pop
+                    if (popped[i] === false) { //this should run the first time that speed goes to zero, and only the first time
+                        count = 1   //this is the number of frames you want the pop to show up for
+                        score = score + 1
+                        popped[i] = true //set popped to true so this if doesn't run again
+                        document.getElementById("score").innerText = "score = " + score
+                    }
+                    if (count > 0) { //this only runs after the first if has run, so this runs while speed is zero but after the first if
+                        ctx.drawImage(popping, x[i], y, 53, 53)
+                        var audio = new Audio("Popeffect.mp3")
+                        popeffect.play();
+                        count = count - 1 //counting down to zero
+
+
+                    }
+                    if (count <= 0) { //once count gets to zero get rid of the popped picture
+                        document.getElementById("popping").style.display = "none"
+
+                    }
+
+                    if (popping.style.display === "none") {
+                        speed = 4
+                        health[i] = 5
+                        x[i] = 0
+                        y[i] = 404
+                        d[i] = 0
+                        popped[i] = false
+                    }
+                }
+                if (score === 50) {
+                    
+                }
+
+                if (d[i] >= 0) {
+                    if (d[i] <= 210) {
+                        x[i] = x[i] + speed
+                        d[i] = d[i] + speed
+                    }
+                }
+
+                if (d[i] >= 210) {
+                    if (d[i] <= 447) {
+                        y[i] = y[i] + -speed
+                        d[i] = d[i] + speed
+                    }
+                }
+                if (d[i] > 447) {
+                    if (d[i] <= 735) {
+                        x[i] = x[i] + speed
+                        d[i] = d[i] + speed
+                    }
+                }
+                if (d[i] > 735) {
+                    if (d[i] <= 1054) {
+                        y[i] = y[i] + speed
+                        d[i] = d[i] + speed
+                    }
+                }
+                if (d[i] > 1054) {
+                    if (d[i] <= 1437) {
+                        x[i] = x[i] + speed
+                        d[i] = d[i] + speed
+                    }
+                }
+                if (d[i] > 1437) {
+                    if (d[i] <= 1593) {
+                        y[i] = y[i] + -speed
+                        d[i] = d[i] + speed
+                    }
+                }
+                if (d[i] > 1593) {
+                    if (d[i] <= 2155) {
+                        x[i] = x[i] + speed
+                        d[i] = d[i] + speed
+                    }
+                }
+
+                if (d[i] > 2155) {
+                    x[i] = -5
+                    y[i] = 404
+                    d[i] = 0
+                    document.getElementById("balloon").style.display = "none"
+                    document.getElementById("popup").style.display = "block"
+                    document.getElementById("button").style.display = "block"
+                    var audio = new Audio("Loser.mp3")
+                    Loser.play();
+                    buttton = 3
+
+                }
+            }
+        }
+    }
+
+
+
+    function balloonclick(e) {
+
+
+       for(var i = 0; i < x.length; i++) {
+            if (e.offsetX > x[i]) {
+            if (e.offsetX < x[i] + 53) {
+                if (e.offsetY > y[i]) {
+                    if (e.offsetY < y[i] + 53) {
+                        health[i] = health[i] - 1
+                    }
+                }
+            }
+        }}
+
+
+    }
+
+
+    function ds() {
+
+
+    }
+
+    function refresh() {
+        window.location.reload()
+    }
+
+</script>
