@@ -7,11 +7,9 @@
             height: 100px;
             Width: 100px;
             opacity: 1;
-            Background-color: cornsilk;
+            Background-color: green;
             display: block;
-            margin-top: 250px;
-            margin-left: auto;
-            margin-right: auto;
+        
             width: 9%;
 
         }
@@ -19,51 +17,29 @@
         div {
             opacity: 1;
             display: block;
-            margin-top: 100;
-            margin-left: auto;
-            margin-right: auto;
             width: 9%;
-
+            color: blue;
         }
 
         body {
             color: black;
             font-size: 20px;
-            background-color: cornsilk;
+            background-color: grey;
+            
         }
 
-        #car {
-            display: none;
-            position: absolute;
-            height: 100px;
-            top: 170px;
-            z-index: 1;
-
-        }
-
-        #road {
-            display: none;
-            position: absolute;
-            left: -450px;
-            height: 140px;
-            top: 150px;
-            width: 2300px;
-        }
         
     </style>
 </head>
 
 <body>
-    <img id="img" src="H.png">
+    <img id="img" src="bitcoin.png">
     <div id="score">
     </div>
     <div id="upgrade">
         Autoclicker
     </div>
     <div id="upgrade2">More clicks </div>
-    <img id="car" src="Car.png">
-    <img id="road" src="Road.png">
-    <img id="" src="">
     
 
 </body>
@@ -78,43 +54,7 @@
     var price2 = 20
     var increaseclick = 0
     var price3 = 100
-    var carx = 1
-    var cary = 170
     var speed = 1
-    setInterval(checkForCar, 5)
-    setInterval(checkforRoad, 5)
-    function checkForCar() {
-        if (score >= 10) {
-            document.getElementById("car").style.display = "block"
-            document.getElementById("car").style.left = carx + "px"
-            document.getElementById("car").style.top = cary + "px"
-            carx = carx + speed
-            if (carx > window.innerWidth) {
-                cary = 155
-                speed = -1
-                document.getElementById("car").style.transform="scaleX(-1)"}
-            if (carx < -120) {
-              carx = -100
-              cary = 170
-              speed = 1
-              document.getElementById("car").style.transform="scaleX(1)"
-            }
-        
-        }
-            
-        }
-        
-        
-        
-
-
-    function checkforRoad() {
-        if (score >= 10) {
-            document.getElementById("road").style.display = "block"
-        }
-    }
-
-
 
     function imgClick() {
         score = score + increaseclick
@@ -143,12 +83,6 @@
 
         }
     }
-    function car() {
-        if (score >= price3) {
-            score = score - price3
-            increaseclick = increaseclick + 1
-            document.getElementById("score").innerText = "score = " + Math.floor(score)
-            price3 = price3 * 1.2
-        }
-    }
+    
+    
 </script>
