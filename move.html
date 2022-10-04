@@ -105,7 +105,7 @@
 			xspeed = xspeed - friction
 		}else if(xspeed < -frictionBoundry){ //
 			xspeed = xspeed + friction
-		}else{ //if the speed is inbetween the boudnry, which should be some small number, then just set it to zero, otherwise it never stops moving.
+		}else{ //if the speed is inbetween the boundry, which should be some small number, then just set it to zero, otherwise it never stops moving.
 			xspeed = 0 //to figure out why we need this set the friciton boundry to 0 and set the friction a bit higher
 		}//even at low frictions, the box will continue to move a bit and never actually stop.
 		

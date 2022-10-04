@@ -37,7 +37,7 @@
 
         //setup variables
         const walkAcceleration = 2.5 //how much is added to the speed each frame
-        const gravity = 0 //how much is subratced from speedY each frame
+        const gravity = 1 //how much is subratced from speedY each frame
         const friction = 1.5   //how much the player is slowed each frame
         const frictionBoundry = .5 //an odd variable, look at the friction calculation to figure it out. Basicly it's the point at which the player stops slowing down and just stops moving. Without this speed approaches zero and never reaches it. 
         const maxSpeed = 5 //maximum horizontal speed, not vertical
@@ -46,8 +46,8 @@
         const playerScale = .8 //makes the player just a bit smaller, 20% smaller in fact. Doesn't affect the hitbox, just the image
 
         //player Variables
-        var playerX = 50 //initial x and y of player
-        var playerY = 500
+        var playerX = 0 //initial x and y of player
+        var playerY = 700
         var playerSpeedX = 0
         var playerSpeedY = 0
         var playerHeight
@@ -176,30 +176,14 @@
             // your wall choices are: 'top' 'left' 'right' or 'bottom'
             //createCannon("top",200,4)
             createCannon("right", 450, 2000)
-            createCannon("top", 550, 2000)
-            createCannon("top", 650, 2000)
-            createCannon("top", 750, 2000)
+            
             createCannon("top", 950, 2000)
                 createCannon("top", 850, 2000)
-                createCannon("top", 1050, 2000)
-                createCannon("top", 1150, 2000)
-                createCannon("top", 1250, 2000)
-                createCannon("top", 1350, 2000)
-                createCannon("top", 1450, 2000)
-                createCannon("top", 1550, 2000)
-                createCannon("top", 450, 2000)
-                createCannon("top", 350, 2000)
-                createCannon("top", 250, 2000)
+        
                 createCannon("top", 150, 2000)
                 createCannon("top", 50, 2000)
                 createCannon("right", 550, 2000)
-            createCannon("right", 750, 2000)
-            createCannon("right", 950, 2000)
-                createCannon("right", 1050, 2000)
-                createCannon("right", 1250, 2000)
-                createCannon("right", 1450, 2000)
-                createCannon("right", 450, 2000)
-                createCannon("right", 250, 2000)
+         
                 createCannon("right", 50, 2000)
             //create collectables
             //createCollectable("www.pictureOfFish.jpg",59,299)
