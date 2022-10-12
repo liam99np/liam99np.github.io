@@ -48,38 +48,38 @@
 <script>
     document.getElementById("img").addEventListener("click", imgClick)
     document.getElementById("upgrade").addEventListener("click", upgradeClick)
-    document.getElementById("upgrade2").addEventListener("click", upgradeClick2)
+    document.getElementById("upgrade2").addEventListener("click", Otherupgradeclick)
     var score = 0
-    var price = 5
-    var price2 = 20
+    var price = 1
+    var price2 = 15
     var increaseclick = 0
-    var price3 = 100
+    var price3 = 200
     var speed = 1
 
     function imgClick() {
         score = score + increaseclick
-        score = score + 1
+        score = score + 5
         document.getElementById("score").innerText = "score = " + Math.floor(score)
     }
     function upgradeClick() {
         if (score >= price) {
             score = score - price
             document.getElementById("score").innerText = "score = " + Math.floor(score)
-            price = price * 1.3
-            setInterval(autoUpgrade, 300)
+            price = price * 2
+            setInterval(autoUpgrade, 500)
 
         }
     }
     function autoUpgrade() {
-        score = score + 1
+        score = score + 5
         document.getElementById("score").innerText = "score = " + Math.floor(score)
     }
-    function upgradeClick2() {
+    function Otherupgradeclick() {
         if (score >= price2) {
             score = score - price2
-            increaseclick = increaseclick + 1
+            increaseclick = increaseclick + 2
             document.getElementById("score").innerText = "score = " + Math.floor(score)
-            price2 = price2 * 1.8
+            price2 = price2 * 2
 
         }
     }
