@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #h1 {
+            position: absolute;
+            left: 20%;
+            top: -3%;
+            font-size: 30px;
+        }
+
+        #button1 {
+            position: absolute;
+            width: 4.5vh;
+            height: 2%;
+            left: 64%;
+            top: 74.7%;
+        }
+
+        #button2 {
+            position: absolute;
+            width: 4.5vh;
+            height: 4vh;
+            left: 97%;
+            top: 79%;
+        }
+
+        #button3 {
+            position: absolute;
+            width: 4vh;
+            height: 8vh;
+            left: 66%;
+            top: 90%;
+        }
+
+        #button4 {
+            position: absolute;
+            width: 6vh;
+            height: 4.5vh;
+            left: 75%;
+            top: 61%;
+        }
+
+        #button5 {
+            position: absolute;
+            width: 0vh;
+            height: 8.6vh;
+            left: 89.45%;
+            top: 70.5%;
+        }
+
+        #p1 {
+            position: absolute;
+            left: 75.2%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p2 {
+            position: absolute;
+            left: 79.75%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p3 {
+            position: absolute;
+            left: 83.8%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p4 {
+            position: absolute;
+            left: 88.8%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p5 {
+            position: absolute;
+            left: 80%;
+            top: 9%;
+            color: black;
+            visibility: hidden;
+            font-size: 20px;
+            user-select: none;
+
+        }
+
+        #p6 {
+            position: absolute;
+            left: 80%;
+            top: 9%;
+            color: black;
+            visibility: hidden;
+            font-size: 20px;
+            user-select: none;
+
+        }
+
+        #p7 {
+            position: absolute;
+            left: 94.4%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #word {
+            position: absolute;
+            left: 75%;
+            height: 5%;
+            width: 23%;
+        }
+
+        #password {
+            position: absolute;
+            left: 75%;
+            top: 8%;
+            width: 23%;
+        }
+
+        #submit {
+            position: absolute;
+            left: 75%;
+            top: 12%;
+            user-select: none;
+        }
+
+        #img1 {
+            position: absolute;
+            top: 17%;
+            width: 1438px;
+            height: 650px;
+            left: 0%;
+            flex-flow: column wrap;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            opacity: 100%;
+            pointer-events: none;
+            user-select: none;
+        }
+        body {
+            
+            background-color: rgba(29,94,152,255);
+        }
+
+        #back {
+            color: red;
+        }
+        #Right {
+            visibility: hidden;
+            position: absolute;
+            left: 35%;
+            top: 20%;
+            width: 400px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="h1"> Find and click four buttons to reveal the password </h1>
+    <a href="Password.html"> Back </a>
+    <input type="button" id="button1" onclick="button1func()"> </input>
+    <input type="button" id="button2" onclick="button2func()"> </input>
+    <input type="button" id="button3" onclick="button3func()"> </input>
+    <input type="button" id="button4" onclick="button4func()"> </input>
+    <input type="button" id="button5" onclick="button5func()"> </input>
+    <input type="text" disabled="disabled" id="word"> </input>
+    <input type="textbox" id="password" placeholder="Enter answer here"> </input>
+    <input type="submit" id="submit" onclick="passwordAnswer()"> </input>
+    <img src="SpotDiff.png" id="img1">
+    <img id="Right"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEVLrk////9GrEpErEhIrUw9qkJBq0VPsFPq9epKr07i8eM4qD31+vXu9+5SsVY7qUDb7txbtV+bz5283r2QypLa7dpkuGe127ZWs1p8wn/M581pumzD4sSCxIRzvnbm8+ap1qrR6dKKyIySy5Sh0qO/38C33LifefQ7AAAKv0lEQVR4nOWd13ajMBRF1QnFxrgRG+NCxvn/TxxwN4iiBsI5j7PWJOzoNklXEoDGFXjbRTzPNsk6mk4BANNptE422TxebL3A/K8HBn924O3+ZQnwQ8oYRogQcBchCGHGaOiDJPt39iYGv8IUoXdeJlNKGX5i8UUwptRJlmfP0JeYIPTijcMoRm1wL0KYMrCPTVDqJgy2S9dnInDP0UTMB8udbtfUSjg5pyhstctGSkxJutDqlhoJdxuXYgW6uxB192d9n6WLcLWkFGnAu0PSbKbpy7QQBr+Jr2P0XoX9dazFJTUQHuYOVfG9OhHqzL8sIPRSxkzwXRgZTpUTiCLhbK/dPN+F/f1qQMLZxtcXXeqE/I0SowLhIWVmx+8uTNPDAITBT9gP34UxnEvHVVnCGLPe+Aox8tsr4SoJe+XLRcJErgaQIvwxlh8aGdlPT4Qnt18DfYq5px4Ig6U/xABeRfylcMQRJVxFQw3gVSwSTY6ChEeNEwg5kfBokHCS0IH5CtFEaIYsQngC/eX4JmHnZIYwHiRH8ERobIIwtcFC76KpdsJgPWwMLYutu6aNjoReZIcLPoWjjnPjboQn1xYXfIp0LHA6Ee4GLGPqRfydLsKFPzRMjfyFHsLYpiD6ri5Zo53w2PtUUEAdSrhWwqOtJnqV34rYRhjbPIKFwjZDbSFc2OuDd9GWcNNMuLPbRK9qSRqNhKsxAOaIJ1lCD9iY6KsioGnBuIEwiMYBmCNGDWV4A+HatmK7XngtQ5jaNV1qFqufL9YSWlyr8VRfv9URnsY0goXoSYxw4owlytxFQM0KXA1hMp4ocxdORAiP43LCqyi/COcSrmwvt/mi3AV/HuF4Uv27EDfx8wiXY4ujd7FlN8LTOOptnng1OIdQqblwWBEOTvWfRmujhdi8nXA1ZsAcsdLOUCFcj9dGC6FK3i8TjqzgrqqyMlUiDMZXrZWFgkbCn3F7YaFy18074WHsNlooPDQQpuM30nySkdYTjjxT3PWeMd4IN58whPkgbuoIR7IA3C5/VUO4H7rfSZfQnk/ofcoQ5oPocQk/IpBe9eqJT8LDZwTSq9iBQzj/KMJ5lTAY3Qppk4gTVAhHP6l413OV/0E48nlhWWRdJrQ12xPM5E7m+LMSYWZlqiDMyY7HVOZwAF6WCK30QuTc+ixiiaPT7J1wZyMh+n4csJyJmxjdvRFuLCxJ0et+2VY4TqDNK+HENfGJakLfbxuCqfAYuJMXQgtbn1D0fgZY3I9uzVJA8g9kWmhaOuT8JeyJNzO9EAb2ATrlPeuJI/xDSPAgtC6SoqiyKS8+hoBuH4RLy9J92QcvwVR8FPDPg9Cy/rWqiUKp+Tlx7oSWLV+gKQdQqrXgsphREMZWzX05Pph7odSNNyy+EVpV0LyUak8dplKfeMkXwDI3RC5vBL/lxuDiiDnhzCIjLZVqN0DpM0nMuxCe7cmGvDQBvxxpL6LnC6E92bBSqqmYaKEiI+aEiS2BhpsHv+SCzO0nJgXhZGpJoOGnCaVzgWQa5ISeJW7I90HFPz/1ckJLym7E64BV8cGL6C4n/GdFsuCWagpR9Cb2Lye0Yh2Rb6KucgzEWU6YWBBoCLdU+1b/sjyYAqjhA1XFL9VU0sRTEATDT500l2pv8gPgDd7TrbtUe1PoAYnVAb3iR1HVNHEX3YLFwMmCD6jHB3OxBRh4gm+gVHsTi8F80HRYM6PXl8DwHGQK9nDZvlT5Gq0zev5vyIDCIg1z0uMxm8pfzMNPE5qi6O1XbIB0SUPcWzPAWTYs8NME0DpdJQmQ7VAg+NFZ9RXJrYTxZvQ6SrW3z1yDSPK/hqfnZwUyhqV/Rs9VBKZy//G9ETcQv4LIdJq4awrEN60uuu7rPDQRPfhdM6PXv2QkyZePYekDJ99CiHwT1Zkm7pImrHxhIIJouFTTovIYChmqqRk9T44mP7wgdg03xku1Vzl6YunNULuZmZlVtTpNteTDB2KXUTQ5o+coUqhpOFemdPDFPkq1189cK9SlDudav1ZfrCnVjEXRvC6Vn1sgHmIwbUTsqVR7+YUblfkhQjzEplHsq1R7CmdKc3wCxAzVyOZLs/I5vtI6DddQawu4ftPEVSxWXGtDLs9Q+YiGNl+axRaq66WE54vcpNFnqfYU3SqveXdNGsY2X5oVeur7FsjhpP5KAWd+VY0vP9Cw99QlafRcqj1EHC37hwS1FXBGN1+adNk/1LAHzE8az1E0u/nSpMsesI59fMRL/Y+kMeCM/rKPr6UXg5s0gquh9l+qPXXpxdDTT8Mv4ApE7ozebKn21KWfRlNPVF0BRwZKExdde6J0HVKv8cUhSrXnNyVaexP5SaPXGX1Zt95Ebf2lXEOtynyp9lBxfi0n9LTtc3dC7HPh99YjrLHPm1vAlQB7fGbh3uets1efkBbEXpfuH736OtsxWgy1rzRxFfuFBs7McJPGICOYT50O0MS5J24B178PgtdzT5q79bkFXCFTmy91ejm7prkRusYX+/XBXOHz/GGg+W+LeBH1q/fDR+7zDKn2c8AcX+ytFn3otgFo6Cx3xVANbr7UiZ5fCPWfxy8hDrJH/3oe38ARxLcCruc0cf2AtzsVTBwreUka3hAjWLoXAxroo3209sWml+65Kt1tYuaIHiNFeyYZ5N3Eyv00MzOHEmRvCFJX5Y6hz78n6g/c9fX597V9/p17MpeH2CvMuzfxo+6+fOm6+1P3l37+HbTW3iwoLH9WQ/j5d0FbdQeIghru8/6McNp0J/sfuFf/Ewqb8kMs5fctLHyAW0zEbX7fAi4GP9qtqLD8tGzlnRlrbquRU/s7M2PPGB3eChp3sOny3hOEIw423d7s+gPvro33XbKub+fBQO7k8uDq/v4hXI2zeOv+huUfeIf0D7wlO8b3gHlnxhoIx/emMzvVkPzdd7nH9rZ6VstRTwhFr0kYUHhdj9FAOJ7ET7ipvp0QeiOpwQngtF93IhzLEjGv3u5ICHdjQPR3jQzNhDbdolynW+uTLCGMbV+ZqryOK0oIj3Ybqs8vt0UI4dHmUQxbATsQ2ly/1ddqQoRwYauh+uXVX1nCPGnYmPpJS5oQIYSrQXrvmoVc7qKFJCE8iF/IZlg4airVxAlhsLZrMsXWDcW2FCGEmU0hlXKuqVImhPEgfaI8kS5ZQoIQrhw7nBE7J4GvFiGEk8QGS6VJzaqaBsJiqXjotEFqFn51EcJVNGxMZVG3LChPCIPlgAUO8Zddk4Q8IYQnZ6hhZO5J/HMlCIuN8CG8EXG2sE0RwlkS9m2qJExEPVCFEMJfmVeIFcTcX8kvlSWEwTzsL//jcC4cYZQJ8/lG2tN5GEzTjvMIzYS5O278Hq568jeVLqDeCHPGvW92HLG/lwswuggh9FJmbM5BGN50ui7FKGHuj3PHSLVKqDNX8D+NhHlc/U20Gyv217F0/HyVFsJcsyXTOJCIskwpvLxIF2Gu3calOkYSUbDvtE7YTRoJ8xnyOSWh0rMsBFM3XQjNcNuklTBXsP1xfLnHZwhivrPcaXG+F+kmLOT9pg6jWOCRYoIwZWATawidFZkgLOSdf5JvShluCz8IM0qnyc9OOfHVyBRhoeCwPWYJ8EPKclJEnmNKCMrJGA19kGT/dp5WxyvJJOFNgbddxPNsk6yjafFOwXQarZNNNo8XW0+303H0H/ETjely4tpvAAAAAElFTkSuQmCC">
+    <p id="p1"> akrj351 </p>
+    <p id="p2"> l07089 </p> 
+    <p id="p3"> llkgm13 </p>
+    <p id="p4"> 39skfm5i </p>
+    <p id="p5"> Wrong! Try again.</p>
+    <p id="p6"> Nice! Now copy paste that into the box above. </p>
+    <p id="p7"> dmxlw </p>
+    <audio>
+        <source src="Ding.mp3" type="mpeg" id="Ding">
+        <source src="Yeah.mp3" type="mpeg" id="Yeah">
+        <source src="Wrong.mp3" type ="mpeg" id="Wrong">
+    </audio>
+
+</body>
+
+</html>
+<script>
+    var button1 = document.getElementById("button1")
+    var button2 = document.getElementById("button2")
+    var button3 = document.getElementById("button3")
+    var button4 = document.getElementById("button4")
+    var button5 = document.getElementById("button5")
+    var p1 = document.getElementById("p1")
+    var p2 = document.getElementById("p2")
+    var p3 = document.getElementById("p3")
+    var p4 = document.getElementById("p4")
+    var p5 = document.getElementById("p5")
+    var p6 = document.getElementById("p6")
+    var p7 = document.getElementById("p7")
+    var img1 = document.getElementById("img1")
+    var h1 = document.getElementById("h1")
+    var right = document.getElementById("Right")
+    var password = document.getElementById("password")
+    var submit = document.getElementById("submit")
+    var time = 0
+    var word = document.getElementById("word")
+    var ding = new Audio("Ding.mp3")
+    var yeah = new Audio("Yeah.mp3")
+    var wrong = new Audio("Wrong.mp3")
+    button1.addEventListener("click", Congrats)
+    button2.addEventListener("click", Congrats)
+    button3.addEventListener("click", Congrats)
+    button4.addEventListener("click", Congrats)
+    button5.addEventListener("click", Congrats)
+    function Congrats() {
+        if (p1.style.visibility === "visible") {
+            if (p2.style.visibility === "visible") {
+                if (p3.style.visibility === "visible") {
+                    if (p4.style.visibility === "visible") {
+                        if (p7.style.visibility === "visible") {
+                            yeah.play()
+                            p5.style.visibility = "hidden"
+                            p6.style.visibility = "visible"
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    function passwordAnswer() {
+        if (password.value === "akrj351l07089llkgm1339skfm5idmxlw") {
+            img1.style.visibility = "hidden"
+            h1.style.visibility = "hidden"
+            right.style.visibility = "visible"
+            ding.play()
+
+        }
+        else {
+            p6.style.visibility = "hidden"
+            p5.style.visibility = "visible"
+            wrong.play()
+
+        }
+    }
+    function button1func() {
+        p1.style.visibility = "visible"
+        ding.play();
+        button1.style.visibility = "hidden"
+    }
+
+    function button2func() {
+        p2.style.visibility = "visible"
+        ding.play();
+        button2.style.visibility = "hidden"
+
+    }
+
+    function button3func() {
+        p3.style.visibility = "visible"
+        ding.play();
+        button3.style.visibility = "hidden"
+
+    }
+
+    function button4func() {
+        p4.style.visibility = "visible"
+        ding.play();
+        button4.style.visibility = "hidden"
+
+    }
+    function button5func() {
+        p7.style.visibility = "visible"
+        ding.play();
+        button5.style.visibility = "hidden"
+
+    }
+
+
+</script>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            position: absolute;
+            left: 20%;
+            top: -3%;
+            font-size: 30px;
+        }
+
+        #button1 {
+            position: absolute;
+            width: -5%;
+            height: 2%;
+            left: 20%;
+            top: 50%;
+        }
+
+        #button2 {
+            position: absolute;
+            width: -5%;
+            height: 2%;
+            left: 10%;
+            top: 76%;
+        }
+
+        #button3 {
+            position: absolute;
+            width: -5%;
+            height: 2%;
+            left: 35%;
+            top: 22%;
+        }
+
+        #button4 {
+            position: absolute;
+            width: -5%;
+            height: 2%;
+            left: 55%;
+            top: 5%;
+        }
+
+        #button5 {
+            position: absolute;
+            width: -5%;
+            height: 2%;
+            left: 31%;
+            top: 15%;
+        }
+
+        #p1 {
+            position: absolute;
+            left: 75.2%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p2 {
+            position: absolute;
+            left: 81.1%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p3 {
+            position: absolute;
+            left: 87%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p4 {
+            position: absolute;
+            left: 92.6%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p5 {
+            position: absolute;
+            left: 80%;
+            top: 9%;
+            color: black;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p6 {
+            position: absolute;
+            left: 80%;
+            top: 9%;
+            color: black;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #p7 {
+            position: absolute;
+            left: 97%;
+            top: -.5%;
+            color: grey;
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        #word {
+            position: absolute;
+            left: 75%;
+            height: 5%;
+            width: 23%;
+        }
+
+        #password {
+            position: absolute;
+            left: 75%;
+            top: 8%;
+            width: 23%;
+        }
+
+        #submit {
+            position: absolute;
+            left: 75%;
+            top: 12%;
+        }
+
+        #img1 {
+            position: absolute;
+            top: 21%;
+            width: 1260px;
+            height: 751px;
+            left: 0%;
+            flex-flow: column wrap;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            opacity: 10%;
+        }
+
+
+        #back {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1> Find and click four buttons to reveal the password </h1>
+    <a href="Password.html" id="back"> Back </a>
+    <input type="button" id="button1" onclick="button1func"> </input>
+    <input type="button" id="button2" onclick="button2func"> </input>
+    <input type="button" id="button3" onclick="button3func"> </input>
+    <input type="button" id="button4" onclick="button4func"> </input>
+    <input type="button" id="button5" onclick="button5func"> </input>
+    <input type="text" disabled="disabled" id="word"> </input>
+    <input type="textbox" id="password" placeholder="Enter answer here"> </input>
+    <input type="submit" id="submit" onclick="passwordAnswer()"> </input>
+    <!-- <img src="SpotDiff.png" id="img1"> -->
+
+<p id="p1"> Fredric </p>
+<p id="p2"> kMonroe </p> <!-- Total of 7 characters allowed in each paragraph tag -->
+<p id="p3"> JrThe3r </p>
+<p id="p4"> dSenior </p>
+<p id="p7"> dSenior </p>
+<p id="p5"> Wrong! Try again.</p>
+<p id="p6"> Nice! Now copy paste that into the box above. </p>
+</body>
+
+</html>
+<script>
+    var button1 = document.getElementById("button1")
+    var button2 = document.getElementById("button2")
+    var button3 = document.getElementById("button3")
+    var button4 = document.getElementById("button4")
+    var button5 = document.getElementById("button5")
+    var p1 = document.getElementById("p1")
+    var p2 = document.getElementById("p2")
+    var p3 = document.getElementById("p3")
+    var p4 = document.getElementById("p4")
+    var p5 = document.getElementById("p5")
+    var p6 = document.getElementById("p6")
+    var p7 = document.getElementById("p7")
+    var password = document.getElementById("password")
+    var submit = document.getElementById("submit")
+    var time = 0
+    var word = document.getElementById("word")
+    button1.addEventListener("click", Congrats)
+    button2.addEventListener("click", Congrats)
+    button3.addEventListener("click", Congrats)
+    button4.addEventListener("click", Congrats)
+    button5.addEventListener("click", Congrats)
+    function Congrats() {
+        if (p1.style.visibility === "visible") {
+            if (p2.style.visibility === "visible") {
+                if (p3.style.visibility === "visible") {
+                    if (p4.style.visibility === "visible") {
+                        if (p7.style.visibility === "visible") {
+                            p6.style.visibility = "visible"
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    function passwordAnswer() {
+        if (password.value === "FredrickMonroeJrThe3rdSenior") {
+
+        }
+        else {
+            p5.style.visibility = "visible"
+        }
+    }
+    function button1func() {
+        p1.style.visibility = "visible"
+    }
+
+    function button2func() {
+        p2.style.visibility = "visible"
+    }
+
+    function button3func() {
+        p3.style.visibility = "visible"
+    }
+
+    function button4func() {
+        p4.style.visibility = "visible"
+    }
+    function button5func() {
+        p7.style.visibility = "visible"
+    }
+
+
+</script>
