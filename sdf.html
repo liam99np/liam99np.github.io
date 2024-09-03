@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style='background-color: black'>
+<div id="my_bouncing_box" style= "background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;" >name</div>
+<script type="text/javascript">
+
+var xs = 1;
+var ys = 1;
+
+// initial position
+var xb = 0;
+var yb = 0;
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+
+box = document.getElementById("my_bouncing_box");
+var id = setInterval(update, 0.5); 
+var r = document.getElementById("my_bouncing_box").style.border-radius;
+
+
+
+function update(){
+
+document.getElementById("my_bouncing_box").style.left = xb + 'px';
+document.getElementById("my_bouncing_box").style.top = yb +'px';
+
+
+if (xb >width){xs = 0-xs;}
+if (xb< 0){xs = 0 - xs;}
+if (yb > height){ys = 0 - ys;}
+if (yb < 0){ys = 0 - ys;}
+
+xb += xs;
+yb += ys;
+
+}
+</script>
+</html>

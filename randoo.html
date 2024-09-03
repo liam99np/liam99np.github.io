@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+   #box {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      left: 0px;
+      
+   }
+
+
+   #h {
+      position: absolute;
+      left: 50%;
+      height: 50%;
+      color: black;
+   }
+</style>
+
+<body>
+
+   <img src="darrel.jpg" id="box"> </img>
+   <h1 id="h"> </h1>
+</body>
+
+</html>
+<script>
+   var box = document.getElementById('box')
+   var boxX = 0
+   var boxY = 0
+   document.addEventListener("keydown", move)
+   setInterval(move, 50)
+   function move(e) {
+      if (e.key === "w") {
+         document.getElementById('box').style.left = boxX + 5
+
+      } 
+      if (e.key === "a") {
+
+      }
+      if (e.key === "s") {
+
+      }
+      if (e.key === "d") {
+
+      }
+   }
+
+
+</script>
