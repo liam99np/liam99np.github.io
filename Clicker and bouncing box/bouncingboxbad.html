@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        #box {
+
+            height: 70px;
+            width: 70px;
+            color: red;
+            position: absolute;
+
+        }
+
+        body {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="box" src="H.png">
+
+
+</body>
+
+</html>
+<script>
+
+    var speedy = -5
+    var speedx = -5
+    var x = 0
+    var y = 0
+    var box = document.getElementById("box")
+    document.getElementById("box").addEventListener("click", boxclick)
+    setInterval(update, 50)
+    function update() {
+        box.style.left = x + "px"
+        box.style.top = y + "px"
+        y = y + speedy
+        x = x + speedx
+
+        if (x > window.innerWidth) {
+            speedx = speedx * -1
+
+        }
+        if (x < 0) {
+            speedx = speedx * -1
+        }
+
+        if (y > window.innerHeight) {
+            speedy = speedy * -1
+        }
+
+
+        if (y < 0) {
+            speedy = speedy * -1
+        }
+
+
+
+        
+    }
+    function boxclick() {
+            speedx = speedx + 90
+            speedy = speedy + 90
+        }
+</script>

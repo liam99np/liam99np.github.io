@@ -9,7 +9,7 @@
   </style>
 </head>
 <body>
-  <canvas id="canvas" width="500" height="500"></canvas>
+  <canvas id="canvas" width="1500" height="1500"></canvas>
 
   <script>
     var canvas = document.getElementById("canvas")
@@ -25,7 +25,7 @@
 	var apres = false
 	var spres = false
 	var friction = 1
-	var acceleration = 4 //ammount that gets added each frame to the speed when you press a button
+	var acceleration = 2 //ammount that gets added each frame to the speed when you press a button
 	var frictionBoundry = 0.5
 	var maxSpeed = 10
 	
@@ -65,9 +65,12 @@
 	
 	function update(){
 		ctx.clearRect(0,0,1000,1000)
-		frictionCode()
+		ctx.fillRect(x, y, 25, 25)
+		ctx.fillStyle = 'red'
+
 		x = x + xspeed
 		y = y + yspeed
+		frictionCode()
 		maxSpeedCode()
 
 		if(wpres === true){

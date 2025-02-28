@@ -1,67 +1,38 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html style='background-color: black'>
+<div id="my_bouncing_box" style= "background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;" >name</div>
+<script type="text/javascript">
 
-<head>
-    <style>
-        #box {
+var xs = 1;
+var ys = 1;
 
-            height: 70px;
-            width: 70px;
-            color: red;
-            position: absolute;
+// initial position
+var xb = 0;
+var yb = 0;
 
-        }
+var width = window.innerWidth;
+var height = window.innerHeight;
 
-        body {
-            background-color: darkcyan;
-        }
-    </style>
-</head>
-
-<body>
-    <img id="box" src="H.png">
-
-
-</body>
-
-</html>
-<script>
-
-    var speedy = -5
-    var speedx = -5
-    var x = 0
-    var y = 0
-    var box = document.getElementById("box")
-    document.getElementById("box").addEventListener("click", boxclick)
-    setInterval(update, 50)
-    function update() {
-        box.style.left = x + "px"
-        box.style.top = y + "px"
-        y = y + speedy
-        x = x + speedx
-
-        if (x > window.innerWidth) {
-            speedx = speedx * -1
-
-        }
-        if (x < 0) {
-            speedx = speedx * -1
-        }
-
-        if (y > window.innerHeight) {
-            speedy = speedy * -1
-        }
-
-
-        if (y < 0) {
-            speedy = speedy * -1
-        }
+box = document.getElementById("my_bouncing_box");
+var id = setInterval(update, 0.5); 
+var r = document.getElementById("my_bouncing_box").style.border-radius;
 
 
 
-        function boxclick() {
-            speedx = speedx + 90
-            speedy = speedy + 90
-        }
-    }
+function update(){
+
+document.getElementById("my_bouncing_box").style.left = xb + 'px';
+document.getElementById("my_bouncing_box").style.top = yb +'px';
+
+
+if (xb >width){xs = 0-xs;}
+if (xb< 0){xs = 0 - xs;}
+if (yb > height){ys = 0 - ys;}
+if (yb < 0){ys = 0 - ys;}
+
+xb += xs;
+yb += ys;
+
+}
 </script>
+</html>

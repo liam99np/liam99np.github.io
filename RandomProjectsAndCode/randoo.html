@@ -17,6 +17,10 @@
       height: 50%;
       color: black;
    }
+   body { 
+      position: absolute;
+      background-color: black;
+}
 </style>
 
 <body>
@@ -28,23 +32,28 @@
 </html>
 <script>
    var box = document.getElementById('box')
-   var boxX = 0
-   var boxY = 0
+   x = 1
+   y = 1 
+  
    document.addEventListener("keydown", move)
-   setInterval(move, 50)
+   
    function move(e) {
+      
       if (e.key === "w") {
-         document.getElementById('box').style.left = boxX + 5
-
+         document.getElementById("box").style.top = y + "px"
+         y -= 5
       } 
       if (e.key === "a") {
-
+         document.getElementById("box").style.left = x + "px"
+         x -= 5
       }
       if (e.key === "s") {
-
+         document.getElementById("box").style.top = y + "px"
+         y += 5
       }
       if (e.key === "d") {
-
+         document.getElementById("box").style.left = x + "px"
+         x += 5
       }
    }
 
