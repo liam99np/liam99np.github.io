@@ -207,7 +207,7 @@ Now that we know our `"keydown"` events are being handled, let's figure out exac
 
   ```js
   function handleKeyDown(event) {
-    if (event.which === KEY.ENTER) {
+    if (event.key === KEY.ENTER) {
       console.log("enter pressed");
     }
   }
